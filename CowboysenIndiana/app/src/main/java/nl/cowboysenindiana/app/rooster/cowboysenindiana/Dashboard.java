@@ -16,7 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.TextView;
+
+import nl.cowboysenindiana.app.presencelist.ContentAdapter;
 
 public class Dashboard extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -35,6 +38,10 @@ public class Dashboard extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
+        GridView gridView = (GridView) findViewById(R.id.gridview);
+        gridView.setAdapter(new ContentAdapter(this));
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
