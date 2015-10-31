@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,81 +25,76 @@ import java.util.List;
 public final class ContentAdapter extends BaseAdapter {
 
     private Dialog dialog;
-    private final List<Child> mItems;
+    private final List<Child> objects;
     private final LayoutInflater mInflater;
     private Context context = null;
     private Child item;
 
     public ContentAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
-
-        mItems = DataProvider.getData();
+        this.context = context;
+        objects = DataProvider.getData();
     }
 
     @Override
-    public int getCount() {
-        return mItems.size();
+    public int getCount() { return objects.size(); }
+
+    @Override
+    public Object getItem(int position) { return objects.get(position); }
+
+    @Override
+    public long getItemId(int position) {
+        return objects.get(position).getChildNumber();
     }
 
     @Override
-    public Child getItem(int i) {
-        return mItems.get(i);
-    }
+    public View getView(int position, View view, ViewGroup viewGroup) {
 
-    @Override
-    public long getItemId(int i) {
-        return mItems.get(i).getChildNumber();
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        View myView = view;
-        ImageView picture;
-        TextView name;
-
-        if (myView == null) {
-            myView = mInflater.inflate(R.layout.grid_item, viewGroup, false);
-            myView.setTag(R.id.picture, myView.findViewById(R.id.picture));
-            myView.setTag(R.id.text, myView.findViewById(R.id.text));
+        if (view == null) {
+            view = mInflater.inflate(R.layout.grid_item, viewGroup, false);
+            view.setTag(R.id.picture, view.findViewById(R.id.picture));
+            view.setTag(R.id.text, view.findViewById(R.id.text));
         }
 
-        picture = (ImageView) myView.getTag(R.id.picture);
-        name = (TextView) myView.getTag(R.id.text);
+        item = (Child) getItem(position);
 
-        item = getItem(i);
-
+        ImageView picture = (ImageView) view.getTag(R.id.picture);
         picture.setImageResource(R.drawable.dummy_image);
+
+        TextView name = (TextView) view.getTag(R.id.text);
         name.setText(item.getChildName());
 
-        myView.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //@TODO functionality to check out the person's presence
-//                dialog = new Dialog(myViewx);
-//                dialog.setTitle(item.getChildName());
-//                dialog.setContentView(R.layout.dialog);
-//                Button b1 = (Button) dialog.findViewById(R.id.add);
-//                Button b2 = (Button) dialog.findViewById(R.id.absent);
-//
-//                ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
-//                picture.setImageResource(R.drawable.dummy_image);
-//
-//                b1.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //@TODO add to presence list functionality
-//                    }
-//                });
-//                b2.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //@TODO absent from presence list functionality
-//                    }
-//                });
-//                dialog.show();
+                dialog = new Dialog(context);
+                dialog.setTitle(item.getChildName());
+                dialog.setContentView(R.layout.dialog);
+                Button b1 = (Button) dialog.findViewById(R.id.add);
+                Button b2 = (Button) dialog.findViewById(R.id.absent);
+
+                ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
+                picture.setImageResource(R.drawable.dummy_image);
+
+                b1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //@TODO add to presence list functionality
+                        dialog.dismiss();
+                    }
+                });
+                b2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //@TODO absent from presence list functionality
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
-        return myView;
+        return view;
     }
 }
