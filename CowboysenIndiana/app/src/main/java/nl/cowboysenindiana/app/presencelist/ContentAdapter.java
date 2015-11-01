@@ -6,8 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.Child;
@@ -28,7 +29,9 @@ public final class ContentAdapter extends BaseAdapter {
     private final List<Child> objects;
     private final LayoutInflater mInflater;
     private Context context = null;
-    private Child item;
+    private Child child;
+    private String childName;
+    private TextView childStatus;
 
     public ContentAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -56,13 +59,14 @@ public final class ContentAdapter extends BaseAdapter {
             view.setTag(R.id.text, view.findViewById(R.id.text));
         }
 
-        item = (Child) getItem(position);
+        child = (Child) getItem(position);
+        childName = child.getChildName();
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);
         picture.setImageResource(R.drawable.dummy_image);
 
         TextView name = (TextView) view.getTag(R.id.text);
-        name.setText(item.getChildName());
+        name.setText(childName);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,25 +74,34 @@ public final class ContentAdapter extends BaseAdapter {
 
                 //@TODO functionality to check out the person's presence
                 dialog = new Dialog(context);
-                dialog.setTitle(item.getChildName());
+                dialog.setTitle(childName);
                 dialog.setContentView(R.layout.dialog);
-                Button b1 = (Button) dialog.findViewById(R.id.add);
-                Button b2 = (Button) dialog.findViewById(R.id.absent);
 
                 ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
                 picture.setImageResource(R.drawable.dummy_image);
 
-                b1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //@TODO add to presence list functionality
-                        dialog.dismiss();
+                Switch aanwezigheidSwitch = (Switch) dialog.findViewById(R.id.switchButton);
+                childStatus = (TextView) dialog.findViewById(R.id.switchStatus);
+                childStatus.setText(childName);
+
+                // child status : set the switch to IN/OUT --------------
+                aanwezigheidSwitch.setChecked(false);
+                aanwezigheidSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                        if (isChecked) {
+                            childStatus.setText(childName + " is binnen");
+                        } else {
+                            childStatus.setText(childName + " is er niet");
+                        }
                     }
                 });
-                b2.setOnClickListener(new View.OnClickListener() {
+
+                // close dialog ------------------------------------
+                ImageView icon_close = (ImageView) dialog.findViewById(R.id.icon_close);
+                icon_close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //@TODO absent from presence list functionality
                         dialog.dismiss();
                     }
                 });
