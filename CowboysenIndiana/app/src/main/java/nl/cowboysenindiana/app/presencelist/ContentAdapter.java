@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.Child;
-import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.DataProvider;
+import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.ChildToTest;
+import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.DataProviderToTest;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 import java.util.List;
@@ -20,23 +20,24 @@ import java.util.List;
 /**
  * ContentAdapter class
  * adapter for GridView
- * @see SquareImageView,
- * Created by Sasha Antipin on 27-10-2015.
+ * @see SquareImageView
+ * @author Sasha Antipin
+ * @since 27-10-2015.
  */
 public final class ContentAdapter extends BaseAdapter {
 
     private Dialog dialog;
-    private final List<Child> objects;
+    private final List<ChildToTest> objects;
     private final LayoutInflater mInflater;
     private Context context = null;
-    private Child child;
+    private ChildToTest child;
     private String childName;
     private TextView childStatus;
 
     public ContentAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
         this.context = context;
-        objects = DataProvider.getData();
+        objects = DataProviderToTest.getData();
     }
 
     @Override
@@ -59,7 +60,7 @@ public final class ContentAdapter extends BaseAdapter {
             view.setTag(R.id.text, view.findViewById(R.id.text));
         }
 
-        child = (Child) getItem(position);
+        child = (ChildToTest) getItem(position);
         childName = child.getChildName();
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);

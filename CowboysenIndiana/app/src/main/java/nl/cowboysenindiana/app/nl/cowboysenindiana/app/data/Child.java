@@ -1,69 +1,45 @@
 package nl.cowboysenindiana.app.nl.cowboysenindiana.app.data;
 
-import android.os.Bundle;
+import java.security.Provider;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Basic class 'Child'
- * to manage children's details
- * Created by Sasha Antipin on 18-10-2015.
+ * Child class
+ * basic class to initialise "Child" object
+ * @see Person, ChildProvider, Particularity
+ * @author Sasha Antipin
+ * @since 6-11-2015.
  */
-public class Child {
+public class Child extends Person {
 
-    //	constants for field references
-    public static final String CHILD_NUMBER= "childNumber";
-    public static final String CHILD_NAME = "childName";
-    public static final String IMAGE_RESOURCE = "imageResource";
-    public static final String CHILD_NOTE = "childNote";
+    private Date birthDay;
+    private List<Particularity> particularities;
+    private List<ChildProvider> providers;
+    private ChildProvider primaryProvider;
+    private Date dateOfPlacement;
 
-    //	private fields
-    private int childNumber;
-    private String childName;
-    private int imageResource;
-    private String childNote;
-
-    // Getters and Setters --------------------------------------
-    public int getChildNumber() { return childNumber; }
-    public void setChildNumber(int childNumber) { this.childNumber = childNumber; }
-
-    public String getChildName() { return childName; }
-    public void setChildName(String childName) { this.childName = childName; }
-
-    public String getChildNote() { return childNote; }
-    public void setChildNote(String childNote) { this.childNote = childNote;  }
-
-    public int getImageResource() { return imageResource; }
-    public void setImageResource(int imageResource) { this.imageResource = imageResource; }
-
-    // Used when creating the data object -------------------------
-    public Child(int childNumber, String childName, String childNote) {
-        this.childNumber = childNumber;
-        // this.imageResource = imageResource;
-        this.childName = childName;
-        this.childNote = childNote;
+    private Child(){
+        super.setPersonType(CHILD);
+        super.setDateCreated(new Date());
     }
 
-    // Create from a bundle --------------------------------------
-    public Child (Bundle b){
-        if (b != null){
-            this.childNumber = b.getInt(CHILD_NUMBER);
-            this.childName = b.getString(CHILD_NAME);
-            // this.imageResource = b.getInt(IMAGE_RESOURCE);
-            this.childNote = b.getString(CHILD_NOTE);
-        }
-    }
+    public Date getBirthDay() { return birthDay; }
+    public void setBirthDay(Date birthDay) { this.birthDay = birthDay; }
 
-    //	Package data for transfer between activities -------------
-    public Bundle toBundle() {
-        Bundle b = new Bundle();
-        b.putDouble(CHILD_NUMBER, this.childNumber);
-        b.putString(CHILD_NAME, this.childName);
-        b.putInt(IMAGE_RESOURCE, this.imageResource);
-        b.putString(CHILD_NOTE, this.childNote);
-        return b;
-    }
+    public List<Particularity> getParticularities() { return particularities; }
+    public void setParticularities(ArrayList<Particularity> particularities) { this.particularities = particularities; }
+    public void addParticularity(Particularity particularity) { this.particularities.add(particularity); }
 
-    @Override
-    public String toString() {
-        return childName;
-    }
+    public List<ChildProvider> getProviders() { return providers; }
+    public void setChildProviders(List<ChildProvider>providers) { this.providers = providers; }
+    public void addChildProvider(ChildProvider childProvider) { this.providers.add(childProvider); }
+
+    public ChildProvider getPrimaryChildProvider() { return primaryProvider; }
+    public void setPrimaryChildProvider(ChildProvider primaryProvider) { this.primaryProvider = primaryProvider; }
+
+    public Date getDateOfPlacement() { return dateOfPlacement; }
+    public void setDateOfPlacement(Date dateOfPlacement) { this.dateOfPlacement = dateOfPlacement; }
 }
