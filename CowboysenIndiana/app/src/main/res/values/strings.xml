@@ -20,6 +20,7 @@
     <string name="presence">Aanwezig</string>
     <string name="delete">Verwijderen</string>
     <string name="modify">Aanpassen</string>
-    <string name="title_activity_add_child">AddChild</string>
+    <string name="title_activity_add_child">Toevoegen</string>
     <string name="add">Toevoegen</string>
+    <string name="title_activity_add_child_detail">AddChildDetail</string>
 </resources>

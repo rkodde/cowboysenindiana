@@ -36,6 +36,10 @@
             android:name="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.AddChild"
             android:label="@string/title_activity_add_child" >
         </activity>
+        <activity
+            android:name="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.AddChildDetail"
+            android:label="@string/title_activity_add_child_detail" >
+        </activity>
     </application>
 
 </manifest>
