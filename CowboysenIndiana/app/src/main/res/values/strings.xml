@@ -13,4 +13,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
+
+    <string name="title_activity_correction">Correction</string>
+    <string name="header_activity_correction">Corrigeren</string>
+    <string name="group_activity_correction">Group</string>
+    <string name="presence_activity_correction">Aanwezig</string>
+    <string name="delete_activity_correction">Verwijderen</string>
+    <string name="modify_activity_correction">Aanpassen</string>
 </resources>

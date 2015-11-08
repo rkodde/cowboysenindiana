@@ -28,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity" />
         </activity>
+        <activity
+            android:name="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.Correction"
+            android:label="@string/title_activity_correction" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.Correction">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_activity_correction"
+        android:id="@+id/textViewCorrectionTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:textSize="34sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/group_activity_correction"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textViewCorrectionTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp"
+        android:textSize="18sp"
+        android:textIsSelectable="true" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButtonGroup1"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:textOn="1"
+        android:textOff="1"
+        android:singleLine="false" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButtonGroup2"
+        android:layout_alignTop="@+id/toggleButtonGroup1"
+        android:layout_toEndOf="@+id/toggleButtonGroup1"
+        android:textOff="2"
+        android:textOn="2" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButtonGroup3"
+        android:layout_alignTop="@+id/toggleButtonGroup2"
+        android:layout_toEndOf="@+id/toggleButtonGroup2"
+        android:textOn="3"
+        android:textOff="3" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButtonGroup4"
+        android:textOn="4"
+        android:textOff="4"
+        android:layout_alignTop="@+id/toggleButtonGroup3"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/toggleButtonGroup4"
+        android:layout_marginTop="5dp"
+        android:id="@+id/view" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchGroup"
+        android:layout_below="@+id/view"
+        android:layout_toEndOf="@id/toggleButtonGroup3"
+        android:textOff="Nee"
+        android:textOn="Ja"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/presence_activity_correction"
+        android:id="@+id/textView2"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/switchGroup"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_activity_correction"
+        android:id="@+id/buttonDelete"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_toEndOf="@id/buttonDelete"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/modify_activity_correction"
+        android:id="@+id/buttonModify"
+        android:layout_alignBottom="@+id/buttonDelete"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/switchGroup"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp"
+        android:layout_above="@+id/buttonDelete"
+        android:id="@+id/layout_RangeSeekBar"></RelativeLayout>
+
+</RelativeLayout>
