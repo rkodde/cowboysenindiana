@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/group_activity_correction"
+        android:text="@string/group"
         android:id="@+id/textView"
         android:layout_below="@+id/textViewCorrectionTitle"
         android:layout_alignParentStart="true"
@@ -85,7 +85,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/presence_activity_correction"
+        android:text="@string/presence"
         android:id="@+id/textView2"
         android:textSize="18sp"
         android:layout_alignTop="@+id/switchGroup"
@@ -94,7 +94,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete_activity_correction"
+        android:text="@string/delete"
         android:id="@+id/buttonDelete"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
@@ -103,7 +103,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/modify_activity_correction"
+        android:text="@string/modify"
         android:id="@+id/buttonModify"
         android:layout_alignBottom="@+id/buttonDelete"
         android:layout_alignParentEnd="true" />

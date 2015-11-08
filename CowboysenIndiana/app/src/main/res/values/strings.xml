@@ -16,8 +16,10 @@
 
     <string name="title_activity_correction">Correction</string>
     <string name="header_activity_correction">Corrigeren</string>
-    <string name="group_activity_correction">Group</string>
-    <string name="presence_activity_correction">Aanwezig</string>
-    <string name="delete_activity_correction">Verwijderen</string>
-    <string name="modify_activity_correction">Aanpassen</string>
+    <string name="group">Groep</string>
+    <string name="presence">Aanwezig</string>
+    <string name="delete">Verwijderen</string>
+    <string name="modify">Aanpassen</string>
+    <string name="title_activity_add_child">AddChild</string>
+    <string name="add">Toevoegen</string>
 </resources>
