@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +20,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
+
+
 
 import nl.cowboysenindiana.app.presencelist.ContentAdapter;
 
@@ -63,15 +66,19 @@ public class Dashboard extends Activity
                 .commit();
     }
 
-    public void onSectionAttached(int number) {
+    // On select intnet to activity
+    private void onSectionAttached(int number) {
+        Intent intent;
         switch (number) {
             case 1:
                 mTitle = getString(R.string.nav_menu_dashboard);
-//                Intent intent = new Intent(getApplicationContext(), Dashboard.class);
-//                startActivity(intent);
                 break;
             case 2:
                 mTitle = getString(R.string.nav_menu_kid);
+                intent = new Intent(this, ScheduleDashboard.class);
+                startActivity(intent);
+                finish();
+                Log.d("NaV: ", String.valueOf(mTitle));
                 break;
             case 3:
                 mTitle = getString(R.string.nav_menu_birthday);
@@ -88,6 +95,8 @@ public class Dashboard extends Activity
                 break;
         }
     }
+
+
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
@@ -133,6 +142,7 @@ public class Dashboard extends Activity
             super.onAttach(activity);
             ((Dashboard) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+            Log.d("NaV: ", String.valueOf(getArguments().getInt(ARG_SECTION_NUMBER)));
         }
     }
 

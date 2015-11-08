@@ -28,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity" />
         </activity>
+        <activity
+            android:name=".ScheduleDashboard"
+            android:label="Dashboard alle groepen." >
+        </activity>
     </application>
 
 </manifest>
