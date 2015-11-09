@@ -1,12 +1,10 @@
-package nl.cowboysenindiana.app.nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.editdata;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import java.text.ParseException;

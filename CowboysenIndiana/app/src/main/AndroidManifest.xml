@@ -37,15 +37,15 @@
                 android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity" />
         </activity>
         <activity
-            android:name="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.Correction"
+            android:name="nl.cowboysenindiana.app.editdata.Correction"
             android:label="@string/title_activity_correction" >
         </activity>
         <activity
-            android:name="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.AddChild"
+            android:name="nl.cowboysenindiana.app.editdata.AddChild"
             android:label="@string/title_activity_add_child" >
         </activity>
         <activity
-            android:name="nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.AddChildDetail"
+            android:name="nl.cowboysenindiana.app.editdata.AddChildDetail"
             android:label="@string/title_activity_add_child_detail" >
         </activity>
     </application>

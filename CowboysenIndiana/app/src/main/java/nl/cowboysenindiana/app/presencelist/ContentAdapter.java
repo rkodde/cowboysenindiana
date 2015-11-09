@@ -55,7 +55,7 @@ public final class ContentAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
 
         if (view == null) {
-            view = mInflater.inflate(R.layout.grid_item, viewGroup, false);
+            view = mInflater.inflate(R.layout.presencelist_grid_item, viewGroup, false);
             view.setTag(R.id.picture, view.findViewById(R.id.picture));
             view.setTag(R.id.text, view.findViewById(R.id.text));
         }
@@ -76,7 +76,7 @@ public final class ContentAdapter extends BaseAdapter {
                 //@TODO functionality to check out the person's presence
                 dialog = new Dialog(context);
                 dialog.setTitle(childName);
-                dialog.setContentView(R.layout.dialog);
+                dialog.setContentView(R.layout.presencelist_dialog);
 
                 ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
                 picture.setImageResource(R.drawable.dummy_image);
@@ -98,7 +98,7 @@ public final class ContentAdapter extends BaseAdapter {
                     }
                 });
 
-                // close dialog ------------------------------------
+                // close presencelist_dialog ------------------------------------
                 ImageView icon_close = (ImageView) dialog.findViewById(R.id.icon_close);
                 icon_close.setOnClickListener(new View.OnClickListener() {
                     @Override

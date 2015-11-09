@@ -1,4 +1,4 @@
-package nl.cowboysenindiana.app.nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.editdata;
 
 /**
  * Created by thijs on 08-11-15.

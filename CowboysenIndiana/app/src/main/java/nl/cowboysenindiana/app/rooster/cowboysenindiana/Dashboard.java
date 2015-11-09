@@ -47,6 +47,7 @@ public class Dashboard extends Activity
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(new ContentAdapter(this));
 
+        /** Initialise Navigation ------------------*/
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();

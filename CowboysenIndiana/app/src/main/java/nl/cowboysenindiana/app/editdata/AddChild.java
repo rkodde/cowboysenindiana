@@ -1,4 +1,4 @@
-package nl.cowboysenindiana.app.nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.editdata;
 
 import android.app.Activity;
 import android.os.Bundle;

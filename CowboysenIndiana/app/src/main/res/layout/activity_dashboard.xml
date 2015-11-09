@@ -7,7 +7,7 @@
     tools:context="nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard">
 
     <!-- load a grid with presence list -->
-    <include layout="@layout/content_presencelist" />
+    <include layout="@layout/presencelist_content" />
 
 
     <!-- As the main content view, the view below consumes the entire
