@@ -64,7 +64,7 @@ public final class ContentAdapter extends BaseAdapter {
         childName = child.getChildName();
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);
-        picture.setImageResource(R.drawable.dummy_image);
+        picture.setImageResource(R.drawable.child_smile5);
 
         TextView name = (TextView) view.getTag(R.id.text);
         name.setText(childName);
@@ -79,7 +79,7 @@ public final class ContentAdapter extends BaseAdapter {
                 dialog.setContentView(R.layout.presencelist_dialog);
 
                 ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
-                picture.setImageResource(R.drawable.dummy_image);
+                picture.setImageResource(R.drawable.child_smile1);
 
                 Switch aanwezigheidSwitch = (Switch) dialog.findViewById(R.id.switchButton);
                 childStatus = (TextView) dialog.findViewById(R.id.switchStatus);
