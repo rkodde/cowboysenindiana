@@ -97,14 +97,18 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
+        // Set menu items
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
+                        getString(R.string.nav_menu_dashboard),
+                        getString(R.string.nav_menu_kid),
+                        getString(R.string.nav_menu_birthday),
+                        getString(R.string.nav_menu_theme),
+                        getString(R.string.nav_menu_about_app),
+                        getString(R.string.nav_menu_log_out),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;

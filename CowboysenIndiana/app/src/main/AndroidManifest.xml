@@ -23,7 +23,15 @@
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".Dashboard" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard" />
+        </activity>
+        <activity
+            android:name=".ScheduleDashboard"
+            android:label="Dashboard alle groepen."
+            android:parentActivityName=".ScheduleDashboard" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity" />
