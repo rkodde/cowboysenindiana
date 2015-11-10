@@ -26,4 +26,5 @@
     <string name="title_activity_add_child">Toevoegen</string>
     <string name="add">Toevoegen</string>
     <string name="title_activity_add_child_detail">AddChildDetail</string>
+    <string name="kdv_ceni"><![CDATA[Kinderdagverblijf - Cowboys & Indiana]]></string>
 </resources>

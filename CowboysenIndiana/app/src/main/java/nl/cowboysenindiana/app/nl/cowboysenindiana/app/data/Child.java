@@ -1,10 +1,8 @@
 package nl.cowboysenindiana.app.nl.cowboysenindiana.app.data;
 
-import java.security.Provider;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Child class

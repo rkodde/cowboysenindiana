@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name="nl.cowboysenindiana.app.frame.SplashActivity"
             android:label="@string/app_name" >
             <!--android:name="nl.cowboysenindiana.app.schedule.ScheduleActivity"-->
             <intent-filter>
