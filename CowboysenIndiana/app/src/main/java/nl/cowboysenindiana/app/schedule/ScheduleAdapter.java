@@ -36,6 +36,9 @@ public class ScheduleAdapter extends BaseAdapter
 
     private LayoutInflater mInflater;
 
+    public void setGroupColor(String groupColor){
+        this.groupColor = groupColor;
+    }
     public ScheduleAdapter(Context c, String groupColor)
     {
         mContext=c;
