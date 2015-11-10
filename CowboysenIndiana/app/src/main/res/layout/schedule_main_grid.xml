@@ -1,0 +1,34 @@
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="true"
+    android:columnCount="1"
+    android:rowCount="1" >
+
+    <TextView
+        android:id="@+id/txtId"
+        android:layout_gravity="fill_horizontal"
+        android:text="1,1" />
+
+    <TextView
+        android:id="@+id/txtEntityLeadHead"
+        android:layout_gravity="fill_horizontal"
+        android:text="2,1" />
+
+    <TextView
+        android:id="@+id/txtEntityLeadSigned"
+        android:layout_gravity="fill_horizontal"
+        android:text="3,1" />
+
+    <TextView
+        android:id="@+id/txtEntityScheduledHead"
+        android:layout_gravity="fill_horizontal"
+        android:text="4,1" />
+
+    <TextView
+        android:id="@+id/txtEntityScheduled"
+        android:layout_gravity="fill_horizontal"
+        android:text="5,1" />
+
+</GridLayout>
