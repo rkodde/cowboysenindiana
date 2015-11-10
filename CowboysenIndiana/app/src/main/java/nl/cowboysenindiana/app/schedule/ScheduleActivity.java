@@ -2,7 +2,10 @@ package nl.cowboysenindiana.app.schedule;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
@@ -22,6 +25,18 @@ public class ScheduleActivity extends Activity{
         Integer scheduleShowLength = 5;
         gridview.setNumColumns(scheduleShowLength);
 
+//        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//                Toast.makeText(getApplicationContext(),
+//                        "Item Clicked: " + position, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+
     }
+
 
 }
