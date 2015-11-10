@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
-import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.ChildToTest;
-import nl.cowboysenindiana.app.nl.cowboysenindiana.app.data.DataProviderToTest;
+import nl.cowboysenindiana.app.data.ChildToTest;
+import nl.cowboysenindiana.app.data.DataProviderToTest;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 import java.util.List;
@@ -64,7 +62,9 @@ public final class ContentAdapter extends BaseAdapter {
         childName = child.getChildName();
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);
-        picture.setImageResource(R.drawable.dummy_image);
+        String imageId = "drawable/child_smile" + (1 + (int)(Math.random() * 8));
+        final int currentImage = this.context.getResources().getIdentifier(imageId, null, context.getPackageName());
+        picture.setImageResource(currentImage);
 
         TextView name = (TextView) view.getTag(R.id.text);
         name.setText(childName);
@@ -74,39 +74,42 @@ public final class ContentAdapter extends BaseAdapter {
             public void onClick(View v) {
 
                 //@TODO functionality to check out the person's presence
-                dialog = new Dialog(context);
-                dialog.setTitle(childName);
-                dialog.setContentView(R.layout.presencelist_dialog);
 
-                ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
-                picture.setImageResource(R.drawable.dummy_image);
 
-                Switch aanwezigheidSwitch = (Switch) dialog.findViewById(R.id.switchButton);
-                childStatus = (TextView) dialog.findViewById(R.id.switchStatus);
-                childStatus.setText(childName);
 
-                // child status : set the switch to IN/OUT --------------
-                aanwezigheidSwitch.setChecked(false);
-                aanwezigheidSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                        if (isChecked) {
-                            childStatus.setText(childName + " is binnen");
-                        } else {
-                            childStatus.setText(childName + " is er niet");
-                        }
-                    }
-                });
-
-                // close presencelist_dialog ------------------------------------
-                ImageView icon_close = (ImageView) dialog.findViewById(R.id.icon_close);
-                icon_close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
+//                dialog = new Dialog(context);
+//                dialog.setTitle(childName);
+//                dialog.setContentView(R.layout.presencelist_dialog);
+//
+//                ImageView picture = (ImageView) dialog.findViewById(R.id.picture);
+//                picture.setImageResource(currentImage);
+//
+//                Switch aanwezigheidSwitch = (Switch) dialog.findViewById(R.id.switchButton);
+//                childStatus = (TextView) dialog.findViewById(R.id.switchStatus);
+//                childStatus.setText(childName);
+//
+//                // child status : set the switch to IN/OUT --------------
+//                aanwezigheidSwitch.setChecked(false);
+//                aanwezigheidSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//
+//                        if (isChecked) {
+//                            childStatus.setText(childName + " is binnen");
+//                        } else {
+//                            childStatus.setText(childName + " is er niet");
+//                        }
+//                    }
+//                });
+//
+//                // close presencelist_dialog ------------------------------------
+//                ImageView icon_close = (ImageView) dialog.findViewById(R.id.icon_close);
+//                icon_close.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                dialog.show();
             }
         });
         return view;
