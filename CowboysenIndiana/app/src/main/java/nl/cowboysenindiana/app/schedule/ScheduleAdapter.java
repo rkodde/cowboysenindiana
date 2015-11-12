@@ -18,9 +18,6 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
  * Created by Tessa on 10/11/15.
  */
 
-
-
-
 public class ScheduleAdapter extends BaseAdapter
 {
     Context mContext;
@@ -28,11 +25,12 @@ public class ScheduleAdapter extends BaseAdapter
     private String groupColor = "#18A608";
     private String themeColor = "#658736";
 
-    private String [] day = {"Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag"};
+    public String [] day = {"Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"};
     private String entityLeadHead = "Teacher";
-    private String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","Anil","Kashif"};
+    private String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","",""};
     private String entityScheduledHead = "Kids";
-    private String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30"};
+    private String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","",""};
+
 
     private LayoutInflater mInflater;
 
@@ -67,6 +65,7 @@ public class ScheduleAdapter extends BaseAdapter
                 parent, false);
         holder = new ViewHolder();
 
+
         // Day of the week
         holder.txtDay = (TextView) convertView.findViewById(R.id.txtId);
         holder.txtDay.setPadding(100, 10, 10, 10);
@@ -88,6 +87,7 @@ public class ScheduleAdapter extends BaseAdapter
         if (position == 0) {
             convertView.setTag(holder);
         }
+
     }
 
     else
@@ -96,11 +96,16 @@ public class ScheduleAdapter extends BaseAdapter
         holder = (ViewHolder) convertView.getTag();
     }
 
+
     holder.txtDay.setText(day[position]);
     holder.txtEntityLeadHead.setText(entityLeadHead);
     holder.txtEntityLeadSigned.setText(entityLeadSigned[position]);
     holder.txtEntityScheduledHead.setText(entityScheduledHead);
     holder.txtEntityScheduled.setText(entityScheduled[position]);
+
+
+        Log.d("pos", String.valueOf(position));
+
     return convertView;
 }
 
@@ -112,5 +117,6 @@ public class ScheduleAdapter extends BaseAdapter
         TextView txtEntityScheduledHead;
         TextView txtEntityScheduled;
     }
+
 }
 

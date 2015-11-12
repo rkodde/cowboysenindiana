@@ -1,10 +1,13 @@
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridLayoutDate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipChildren="true"
     android:columnCount="1"
+    android:orientation="horizontal"
     android:rowCount="1" >
+
 
     <TextView
         android:id="@+id/txtId"
@@ -29,6 +32,29 @@
     <TextView
         android:id="@+id/txtEntityScheduled"
         android:layout_gravity="fill_horizontal"
+
         android:text="5,1" />
+
+    <!--<GridLayout-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/gridLayoutDate2" >-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/txtEntityScheduled2"-->
+            <!--android:layout_gravity="fill_horizontal"-->
+            <!--android:text="5,1" />-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/txtEntityScheduled3"-->
+            <!--android:layout_gravity="fill_horizontal"-->
+            <!--android:text="5,2" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/txtEntityScheduled4"-->
+            <!--android:layout_gravity="fill_horizontal"-->
+            <!--android:text="5,3" />-->
+
+        <!--</GridLayout>-->
 
 </GridLayout>
