@@ -22,7 +22,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Dashboard"
+            android:name="nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard"
             android:label="@string/title_activity_dashboard"
             android:parentActivityName=".Dashboard" >
             <meta-data
@@ -32,10 +32,10 @@
         <activity
             android:name=".ScheduleDashboard"
             android:label="Dashboard alle groepen."
-            android:parentActivityName=".ScheduleDashboard" >
+            android:parentActivityName="nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity" />
+                android:value="nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard" />
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.editdata.Correction"

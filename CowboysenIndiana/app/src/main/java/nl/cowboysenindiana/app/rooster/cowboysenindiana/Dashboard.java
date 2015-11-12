@@ -38,6 +38,8 @@ public class Dashboard extends BaseActivity
 
     @Override
     protected void goNext(){
+//        String toast = "Dashboard GO next";
+//        showToast(toast);
         /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(new ContentAdapter(this));
