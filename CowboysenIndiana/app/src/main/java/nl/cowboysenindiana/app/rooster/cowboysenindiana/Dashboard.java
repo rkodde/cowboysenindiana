@@ -13,9 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.presencelist.ContentAdapter;
 
-public class Dashboard extends Activity
+public class Dashboard extends BaseActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
@@ -28,11 +29,15 @@ public class Dashboard extends Activity
      */
     private CharSequence mTitle;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
 
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_dashboard;
+    }
+
+
+    @Override
+    protected void goNext(){
         /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(new ContentAdapter(this));

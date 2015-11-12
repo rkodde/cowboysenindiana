@@ -5,14 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ScheduleDashboard extends Activity {
+import nl.cowboysenindiana.app.frame.BaseActivity;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.schedule_dashboard);
-
-    }
+public class ScheduleDashboard extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,5 +29,15 @@ public class ScheduleDashboard extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void goNext() {
+
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.schedule_dashboard;
     }
 }
