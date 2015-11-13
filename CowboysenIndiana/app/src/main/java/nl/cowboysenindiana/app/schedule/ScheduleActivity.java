@@ -1,12 +1,7 @@
 package nl.cowboysenindiana.app.schedule;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
-
+import android.widget.LinearLayout;
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
@@ -14,38 +9,39 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
  * Created by Tessa on 10/11/15.
  */
 public class ScheduleActivity extends BaseActivity{
+
+
 //Bundle savedInstanceState
     @Override
     protected void goNext() {
-//    public void goNext(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.schedule_main);
 
-        // @// TODO: 10/11/15 needs to create NEW for other groupID so you can have more dif schedule on 1 page
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-
-        gridview.setAdapter(new ScheduleAdapter(this, "#658736"));
-        Integer scheduleShowLength = 7;
-
-        gridview.setNumColumns(scheduleShowLength);
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Item Clicked: " + position, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
+        this.generateSchedule();
+        this.generateSchedule();
+        this.generateSchedule();
 
     }
 
+    public void generateSchedule(){
+        Integer scheduleDayLength = 7;
 
+        // Find existing linearLayout in xml by ID
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linid);
+
+        // Create new GridView
+        GridView gridView = new GridView(this);
+
+        // Set config Gridview
+        // Adapter is set for Data
+        gridView.setAdapter(new ScheduleAdapter(this));
+        gridView.setNumColumns(scheduleDayLength);
+        gridView.setClipChildren(false);
+
+        // Adding the gridview to the RelativeLayout as a child
+        linearLayout.addView(gridView);
+
+        // set the RelativeLayout as our content view
+        setContentView(linearLayout);
+    }
 
     @Override
     protected int getLayoutResourceId() {

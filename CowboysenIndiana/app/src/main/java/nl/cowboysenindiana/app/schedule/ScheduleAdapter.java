@@ -22,14 +22,18 @@ public class ScheduleAdapter extends BaseAdapter
 {
     Context mContext;
 
+    // Db Values6
     private String groupColor = "#18A608";
     private String themeColor = "#658736";
 
-    public String [] day = {"Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"};
+    private String [] day = {"Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"};
+
     private String entityLeadHead = "Teacher";
     private String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","",""};
+
     private String entityScheduledHead = "Kids";
     private String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","",""};
+
 
 
     private LayoutInflater mInflater;
@@ -37,12 +41,13 @@ public class ScheduleAdapter extends BaseAdapter
     public void setGroupColor(String groupColor){
         this.groupColor = groupColor;
     }
-    public ScheduleAdapter(Context c, String groupColor)
+
+    public ScheduleAdapter(Context c)
     {
         mContext=c;
         mInflater = LayoutInflater.from(c);
-        this.groupColor = groupColor;
     }
+
     public int getCount()
     {
         return day.length;
@@ -65,7 +70,7 @@ public class ScheduleAdapter extends BaseAdapter
                 parent, false);
         holder = new ViewHolder();
 
-
+        // Gif the TextView custom settings.
         // Day of the week
         holder.txtDay = (TextView) convertView.findViewById(R.id.txtId);
         holder.txtDay.setPadding(100, 10, 10, 10);
@@ -96,7 +101,7 @@ public class ScheduleAdapter extends BaseAdapter
         holder = (ViewHolder) convertView.getTag();
     }
 
-
+    // Set DB data to TextViewID
     holder.txtDay.setText(day[position]);
     holder.txtEntityLeadHead.setText(entityLeadHead);
     holder.txtEntityLeadSigned.setText(entityLeadSigned[position]);
