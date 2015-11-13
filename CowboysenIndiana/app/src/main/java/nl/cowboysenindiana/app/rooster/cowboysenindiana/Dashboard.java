@@ -15,6 +15,7 @@ import android.widget.GridView;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.presencelist.ContentAdapter;
+import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
 public class Dashboard extends BaseActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -73,7 +74,7 @@ public class Dashboard extends BaseActivity
                 break;
             case 2:
                 mTitle = getString(R.string.nav_menu_kid);
-                intent = new Intent(this, ScheduleDashboard.class);
+                intent = new Intent(this, ScheduleActivity.class);
                 startActivity(intent);
                 finish();
                 Log.d("NaV: ", String.valueOf(mTitle));
