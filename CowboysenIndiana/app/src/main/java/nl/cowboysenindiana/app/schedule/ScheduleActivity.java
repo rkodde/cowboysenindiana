@@ -1,12 +1,7 @@
 package nl.cowboysenindiana.app.schedule;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;

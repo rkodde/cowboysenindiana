@@ -1,35 +1,11 @@
 package nl.cowboysenindiana.app.rooster.cowboysenindiana;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.presencelist.ContentAdapter;
-import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
-public class ScheduleDaySignedIn extends BaseActivity
-       {
-// implements NavigationDrawerFragment.NavigationDrawerCallbacks
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-   // private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
-    private CharSequence mTitle;
-
+public class ScheduleDaySignedIn extends BaseActivity {
 
     @Override
     protected int getLayoutResourceId() {
