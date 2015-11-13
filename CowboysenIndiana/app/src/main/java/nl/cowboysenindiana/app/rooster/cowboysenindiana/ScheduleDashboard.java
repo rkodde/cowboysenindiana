@@ -1,8 +1,6 @@
 package nl.cowboysenindiana.app.rooster.cowboysenindiana;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -44,7 +42,7 @@ public class ScheduleDashboard extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, Dashboard.class);
+        Intent intent = new Intent(this, ScheduleDaySignedIn.class);
         startActivity(intent);
         finish();
     }

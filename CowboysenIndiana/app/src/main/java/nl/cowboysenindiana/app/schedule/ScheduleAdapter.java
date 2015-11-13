@@ -74,17 +74,21 @@ public class ScheduleAdapter extends BaseAdapter
         // Day of the week
         holder.txtDay = (TextView) convertView.findViewById(R.id.txtId);
         holder.txtDay.setPadding(100, 10, 10, 10);
+
         // Entity Lead Header
         holder.txtEntityLeadHead = (TextView) convertView.findViewById(R.id.txtEntityLeadHead);
         holder.txtEntityLeadHead.setBackgroundColor(Color.parseColor(groupColor));
         holder.txtEntityLeadHead.setPadding(100, 10, 10, 10);
+
         // Entity Lead that day
         holder.txtEntityLeadSigned = (TextView) convertView.findViewById(R.id.txtEntityLeadSigned);
         holder.txtEntityLeadSigned.setPadding(100, 10, 10, 10);
+
         // Entity Scheduled Header
         holder.txtEntityScheduledHead = (TextView) convertView.findViewById(R.id.txtEntityScheduledHead);
         holder.txtEntityScheduledHead.setBackgroundColor(Color.parseColor(groupColor));
         holder.txtEntityScheduledHead.setPadding(100, 10, 10, 10);
+
         // Entity Scheduled
         holder.txtEntityScheduled = (TextView) convertView.findViewById(R.id.txtEntityScheduled);
         holder.txtEntityScheduled.setPadding(100, 10, 10, 10);

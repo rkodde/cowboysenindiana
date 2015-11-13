@@ -1,11 +1,10 @@
 package nl.cowboysenindiana.app.frame;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard;
+import nl.cowboysenindiana.app.rooster.cowboysenindiana.ScheduleDaySignedIn;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 /**
@@ -37,7 +36,7 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashActivity.this, Dashboard.class);
+                Intent i = new Intent(SplashActivity.this, ScheduleDaySignedIn.class);
                 startActivity(i);
 
                 // close this activity

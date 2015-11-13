@@ -1,9 +1,17 @@
 package nl.cowboysenindiana.app.schedule;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
@@ -21,9 +29,9 @@ public class ScheduleActivity extends BaseActivity{
         this.generateSchedule();
         this.generateSchedule();
         this.generateSchedule();
-        this.generateSchedule();
-        this.generateSchedule();
-        this.generateSchedule();
+//        this.generateSchedule();
+//        this.generateSchedule();
+//        this.generateSchedule();
     }
 
     public void generateSchedule(){
@@ -40,22 +48,39 @@ public class ScheduleActivity extends BaseActivity{
         gridView.setAdapter(new ScheduleAdapter(this));
         gridView.setNumColumns(scheduleDayLength);
         gridView.setClipChildren(false);
-        gridView.setPadding(10, 10, 10, 10);
+        gridView.setPadding(10, 5, 10, 5);
+        gridView.setBackgroundColor(Color.parseColor("#034555"));
+      	gridView.setColumnWidth(200);
+     	gridView.setHorizontalSpacing(10);
+    	gridView.setVerticalSpacing(10);
 
 
 //        android:layout_width="fill_parent"
 //        android:layout_height="wrap_content"
-
-
-
-
 
         // Adding the gridview to the RelativeLayout as a child
         linearLayout.addView(gridView);
 
         // set the RelativeLayout as our content view
         setContentView(linearLayout);
+
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "Item Clicked: " + position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
     }
+
+
+
 
     @Override
     protected int getLayoutResourceId() {
