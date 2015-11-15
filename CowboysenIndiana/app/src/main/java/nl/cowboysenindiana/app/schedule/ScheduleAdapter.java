@@ -19,17 +19,31 @@ public class ScheduleAdapter extends BaseAdapter
 {
     Context mContext;
 
+    public void setShowDayName(boolean showDayName) {
+        this.showDayName = showDayName;
+    }
+
+    boolean showDayName = true;
+
+
+
     // Db Values6
     private String groupColor = "#18A608";
     private String themeColor = "#658736";
 
-    private String [] day = {"Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"};
+    private String [] dayName = {"Ma","Di","Wo","Do","Vr","Za","Zo",
+    "","","","","","",""};
+
+    private String[] dayDate ={"30","1","2","3","4","5","6",
+            "7","8","9","10","11","12","13"};
 
     private String entityLeadHead = "Teacher";
-    private String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","",""};
+    private String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","","",
+            "Rohit","Rahul","Ravi","Amit","Arun","",""};
 
     private String entityScheduledHead = "Kids";
-    private String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","",""};
+    private String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","","",
+            "25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","",""};
 
 
 
@@ -47,7 +61,7 @@ public class ScheduleAdapter extends BaseAdapter
 
     public int getCount()
     {
-        return day.length;
+        return dayName.length;
     }
     public Object getItem(int position)
     {
@@ -63,32 +77,39 @@ public class ScheduleAdapter extends BaseAdapter
     if(convertView==null)
 
     {
-        convertView = mInflater.inflate(R.layout.schedule_main_grid,
+        convertView = mInflater.inflate(R.layout.schedule_grid_layout,
                 parent, false);
         holder = new ViewHolder();
 
         // Gif the TextView custom settings.
         // Day of the week
-        holder.txtDay = (TextView) convertView.findViewById(R.id.txtId);
-        holder.txtDay.setPadding(100, 10, 10, 10);
+//        holder.txtDayName = (TextView) convertView.findViewById(R.id.txtDayName);
+//        holder.txtDayName.setPadding(10, 10, 10, 10);
+
+        // Date of the day
+        holder.txtDayDate = (TextView) convertView.findViewById(R.id.txtDayDate);
+        holder.txtDayDate.setPadding(10, 10, 10, 10);
+
 
         // Entity Lead Header
         holder.txtEntityLeadHead = (TextView) convertView.findViewById(R.id.txtEntityLeadHead);
         holder.txtEntityLeadHead.setBackgroundColor(Color.parseColor(groupColor));
-        holder.txtEntityLeadHead.setPadding(100, 10, 10, 10);
+        //holder.txtEntityLeadHead.setBackgroundResource(R.drawable.schedule_border);
 
-        // Entity Lead that day
+        holder.txtEntityLeadHead.setPadding(10, 10, 10, 10);
+
+        // Entity Lead that dayName
         holder.txtEntityLeadSigned = (TextView) convertView.findViewById(R.id.txtEntityLeadSigned);
-        holder.txtEntityLeadSigned.setPadding(100, 10, 10, 10);
+        holder.txtEntityLeadSigned.setPadding(10, 10, 10, 10);
 
         // Entity Scheduled Header
         holder.txtEntityScheduledHead = (TextView) convertView.findViewById(R.id.txtEntityScheduledHead);
         holder.txtEntityScheduledHead.setBackgroundColor(Color.parseColor(groupColor));
-        holder.txtEntityScheduledHead.setPadding(100, 10, 10, 10);
+        holder.txtEntityScheduledHead.setPadding(10, 10, 10, 10);
 
         // Entity Scheduled
         holder.txtEntityScheduled = (TextView) convertView.findViewById(R.id.txtEntityScheduled);
-        holder.txtEntityScheduled.setPadding(100, 10, 10, 10);
+        holder.txtEntityScheduled.setPadding(10, 10, 10, 10);
 
         if (position == 0) {
             convertView.setTag(holder);
@@ -103,7 +124,8 @@ public class ScheduleAdapter extends BaseAdapter
     }
 
     // Set DB data to TextViewID
-    holder.txtDay.setText(day[position]);
+//    holder.txtDayName.setText(dayName[position]);
+    holder.txtDayDate.setText(dayDate[position]);
     holder.txtEntityLeadHead.setText(entityLeadHead);
     holder.txtEntityLeadSigned.setText(entityLeadSigned[position]);
     holder.txtEntityScheduledHead.setText(entityScheduledHead);
@@ -117,7 +139,8 @@ public class ScheduleAdapter extends BaseAdapter
 
         static class ViewHolder
     {
-        TextView txtDay;
+//        TextView txtDayName;
+        TextView txtDayDate;
         TextView txtEntityLeadSigned;
         TextView txtEntityLeadHead;
         TextView txtEntityScheduledHead;

@@ -1,10 +1,14 @@
 package nl.cowboysenindiana.app.schedule;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
@@ -22,11 +26,12 @@ public class ScheduleActivity extends BaseActivity{
 // @// TODO: 13/11/15 Scrolling whole page, keeps crashing... ****
 
         this.generateSchedule();
-        this.generateSchedule();
-        this.generateSchedule();
 //        this.generateSchedule();
 //        this.generateSchedule();
 //        this.generateSchedule();
+//        this.generateSchedule();
+//        this.generateSchedule();
+
     }
 
     public void generateSchedule(){
@@ -44,10 +49,10 @@ public class ScheduleActivity extends BaseActivity{
         gridView.setNumColumns(scheduleDayLength);
         gridView.setClipChildren(false);
         gridView.setPadding(10, 5, 10, 5);
-        gridView.setBackgroundColor(Color.parseColor("#034555"));
-      	gridView.setColumnWidth(200);
-     	gridView.setHorizontalSpacing(10);
-    	gridView.setVerticalSpacing(10);
+        //gridView.setBackgroundResource(R.drawable.schedule_border);
+//      	gridView.setColumnWidth(200);
+//     	gridView.setHorizontalSpacing(10);
+//    	gridView.setVerticalSpacing(10);
 
 
 //        android:layout_width="fill_parent"
@@ -58,7 +63,6 @@ public class ScheduleActivity extends BaseActivity{
 
         // set the RelativeLayout as our content view
         setContentView(linearLayout);
-
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
