@@ -1,0 +1,20 @@
+<GridView
+    android:id="@+id/placeholder"
+    android:stretchMode="columnWidth"
+    android:cacheColorHint="#000000"
+    android:background="#034555"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:layout_margin="10dp"
+    android:horizontalSpacing="1dip"
+    android:layout_weight="1"
+    android:verticalSpacing="10dip"
+    android:numColumns="auto_fit"
+    android:paddingBottom="1dp"
+    android:paddingTop="1dp"
+    android:paddingLeft="1dp"
+    android:columnWidth="200dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+
