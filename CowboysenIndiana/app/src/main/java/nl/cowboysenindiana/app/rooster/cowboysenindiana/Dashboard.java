@@ -2,6 +2,7 @@ package nl.cowboysenindiana.app.rooster.cowboysenindiana;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import nl.cowboysenindiana.app.presencelist.ContentAdapter;
+import nl.cowboysenindiana.app.utilities.ScreenUtility;
 
 public class Dashboard extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -36,6 +38,22 @@ public class Dashboard extends Activity
         /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(new ContentAdapter(this));
+
+        /** Check window's size ---------------------------------- */
+        ScreenUtility utility = new ScreenUtility(this);
+        float width = utility.getWidth();
+        float height = utility.getHeight();
+
+        String check = " horizontal \n";
+        if (width < height)  check = " vertical \n";
+
+        String output = "Position : " + check + "\nWidth: " + width + ", " +
+                "Height: " + height;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(output)
+                .setTitle("Dimensions")
+                .create()
+                .show();
 
         /** Initialise Navigation ------------------*/
         mNavigationDrawerFragment = (NavigationDrawerFragment)
