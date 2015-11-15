@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gridview"
-    android:stretchMode="columnWidth"
-    android:cacheColorHint="#00000000"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:clipChildren="false"
-    android:horizontalSpacing="5dip"
-    android:verticalSpacing="5dip" />
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:id="@+id/linid"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <!--<GridView-->
+            <!--android:id="@+id/placeholder"-->
+            <!--android:stretchMode="columnWidth"-->
+            <!--android:cacheColorHint="#000000"-->
+            <!--android:background="#034555"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:clipChildren="false"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:horizontalSpacing="1dip"-->
+            <!--android:layout_weight="1"-->
+            <!--android:verticalSpacing="10dip"-->
+            <!--android:numColumns="auto_fit"-->
+            <!--android:paddingBottom="1dp"-->
+            <!--android:paddingTop="1dp"-->
+            <!--android:paddingLeft="1dp"-->
+            <!--android:columnWidth="90dp"-->
+            <!--/>-->
+        <!-- -->
+
+    <!--<GridView-->
+        <!--android:id="@+id/placeholder"-->
+
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+
+        <!--/>-->
+
+
+</LinearLayout>

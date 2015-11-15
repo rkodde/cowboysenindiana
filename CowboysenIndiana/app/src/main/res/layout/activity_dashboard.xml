@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard">
+    tools:context="nl.cowboysenindiana.app.rooster.cowboysenindiana.ScheduleDaySignedIn">
 
     <!-- load a grid with presence list -->
     <include layout="@layout/presencelist_content" />
@@ -20,12 +20,12 @@
 
     <!-- The drawer is given a fixed width in dp and extends the full height of
          the container. -->
-    <fragment
-        android:id="@+id/navigation_drawer"
-        android:name="nl.cowboysenindiana.app.rooster.cowboysenindiana.NavigationDrawerFragment"
-        android:layout_width="@dimen/navigation_drawer_width"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        tools:layout="@layout/drawer_dashboard" />
+    <!--<fragment-->
+        <!--android:id="@+id/navigation_drawer"-->
+        <!--android:name="nl.cowboysenindiana.app.rooster.cowboysenindiana.NavigationDrawerFragment"-->
+        <!--android:layout_width="@dimen/navigation_drawer_width"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--tools:layout="@layout/drawer_dashboard" />-->
 
 </android.support.v4.widget.DrawerLayout>
