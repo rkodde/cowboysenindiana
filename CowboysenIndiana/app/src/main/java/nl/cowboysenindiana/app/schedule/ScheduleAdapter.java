@@ -67,7 +67,7 @@ public class ScheduleAdapter extends BaseAdapter
 
     public ScheduleAdapter(Context c)
     {
-        mContext=c;
+        mContext = c;
         mInflater = LayoutInflater.from(c);
     }
 
@@ -85,13 +85,16 @@ public class ScheduleAdapter extends BaseAdapter
     }
     public View getView(int position, View convertView, ViewGroup parent) {
 
-    ViewHolder holder = null;
-    if(convertView==null)
+    ViewHolder holder = new ViewHolder();
+
+
+
+    if ( convertView == null )
 
     {
         convertView = mInflater.inflate(R.layout.schedule_grid_layout,
                 parent, false);
-        holder = new ViewHolder();
+        //holder = new ViewHolder();
 
         // Gif the TextView custom settings.
         // Day of the week
@@ -123,20 +126,21 @@ public class ScheduleAdapter extends BaseAdapter
         holder.txtEntityScheduled = (TextView) convertView.findViewById(R.id.txtEntityScheduled);
         holder.txtEntityScheduled.setPadding(10, 10, 10, 10);
 
-        if (position == 0) {
+        //if (position == 0) {
             convertView.setTag(holder);
-        }
+        //}
 
     }
 
     else
 
     {
-        holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
     }
 
     // Set DB data to TextViewID
 //    holder.txtDayName.setText(dayName[position]);
+
         try {
             holder.txtDayDate.setText(dayDate[position]);
             holder.txtEntityLeadHead.setText(entityLeadHead);
@@ -145,7 +149,7 @@ public class ScheduleAdapter extends BaseAdapter
             holder.txtEntityScheduled.setText(entityScheduled[position]);
         }
         catch (NullPointerException e){
-            Log.e("ERROR", e.toString());
+            Log.e("holder", e.toString());
         }
 
         Log.d("pos", String.valueOf(position));
