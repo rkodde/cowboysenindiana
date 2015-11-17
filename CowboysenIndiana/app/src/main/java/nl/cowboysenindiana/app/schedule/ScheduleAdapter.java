@@ -37,7 +37,7 @@ public class ScheduleAdapter extends BaseAdapter
             "","","","","","","",
             "","","","","","","",};
 
-    private String[] dayDate ={"30","1","2","3","4","5","6",
+    private String[] dayDate = {"30","1","2","3","4","5","6",
             "7","8","9","10","11","12","13",
             "14","15","16","17","18","19","20",
             "21","22","23","24","25","26","27",
@@ -137,12 +137,16 @@ public class ScheduleAdapter extends BaseAdapter
 
     // Set DB data to TextViewID
 //    holder.txtDayName.setText(dayName[position]);
-    holder.txtDayDate.setText(dayDate[position]);
-    holder.txtEntityLeadHead.setText(entityLeadHead);
-    holder.txtEntityLeadSigned.setText(entityLeadSigned[position]);
-    holder.txtEntityScheduledHead.setText(entityScheduledHead);
-    holder.txtEntityScheduled.setText(entityScheduled[position]);
-
+        try {
+            holder.txtDayDate.setText(dayDate[position]);
+            holder.txtEntityLeadHead.setText(entityLeadHead);
+            holder.txtEntityLeadSigned.setText(entityLeadSigned[position]);
+            holder.txtEntityScheduledHead.setText(entityScheduledHead);
+            holder.txtEntityScheduled.setText(entityScheduled[position]);
+        }
+        catch (NullPointerException e){
+            Log.e("ERROR", e.toString());
+        }
 
         Log.d("pos", String.valueOf(position));
 
