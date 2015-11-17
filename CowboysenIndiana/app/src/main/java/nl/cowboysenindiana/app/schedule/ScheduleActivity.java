@@ -1,14 +1,14 @@
 package nl.cowboysenindiana.app.schedule;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.app.ActionBar;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
@@ -25,6 +25,11 @@ public class ScheduleActivity extends BaseActivity{
     protected void goNext() {
 // @// TODO: 13/11/15 Scrolling whole page, keeps crashing... ****
 
+        // Set actionBarTheme
+        this.setActionBarTheme();
+
+
+
         this.generateSchedule();
 //        this.generateSchedule();
 //        this.generateSchedule();
@@ -32,6 +37,20 @@ public class ScheduleActivity extends BaseActivity{
 //        this.generateSchedule();
 //        this.generateSchedule();
 
+
+
+    }
+
+    public void setActionBarTheme(){
+        // Change to getMonth();
+        this.setTitle("December 2016");
+
+        // Change to setActionBarBG(getMontPic())
+        Resources res = getResources();
+        Bitmap bMap = BitmapFactory.decodeResource(res, R.drawable.action_christmas);
+        BitmapDrawable actionBarBackground = new BitmapDrawable(res, bMap);
+        ActionBar bar = getActionBar();
+        bar.setBackgroundDrawable(actionBarBackground);
     }
 
     public void generateSchedule(){
