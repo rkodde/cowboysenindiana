@@ -1,6 +1,8 @@
 package nl.cowboysenindiana.app.rooster.cowboysenindiana;
 
+import android.support.v4.widget.DrawerLayout;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.presencelist.ContentAdapter;
@@ -15,10 +17,15 @@ public class ScheduleDaySignedIn extends BaseActivity {
 
     @Override
     protected void goNext() {
-//        String toast = "ScheduleDaySignedIn GO next";
-//        showToast(toast);
+
+        showToast("ScheduleDaySignedIn GO next");
         /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
+
+//        LinearLayout GridFrame = (LinearLayout) findViewById(R.id.GridFrame);
+
         GridView gridView = (GridView) findViewById(R.id.gridview);
+
+//        GridFrame.addView(gridView);
         gridView.setAdapter(new ContentAdapter(this));
     }
 //        /** Initialise Navigation ------------------*/
