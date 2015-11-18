@@ -15,8 +15,7 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
  * Created by Tessa on 10/11/15.
  */
 
-public class ScheduleAdapter extends BaseAdapter
-{
+public class ScheduleAdapter extends BaseAdapter {
     Context mContext;
 
     public void setShowDayName(boolean showDayName) {
@@ -98,8 +97,8 @@ public class ScheduleAdapter extends BaseAdapter
 
         // Gif the TextView custom settings.
         // Day of the week
-//        holder.txtDayName = (TextView) convertView.findViewById(R.id.txtDayName);
-//        holder.txtDayName.setPadding(10, 10, 10, 10);
+        //holder.txtDayName = (TextView) convertView.findViewById(R.id.txtDayName);
+        //holder.txtDayName.setPadding(10, 10, 10, 10);
 
         // Date of the day
         holder.txtDayDate = (TextView) convertView.findViewById(R.id.txtDayDate);
@@ -138,10 +137,11 @@ public class ScheduleAdapter extends BaseAdapter
             holder = (ViewHolder) convertView.getTag();
     }
 
-    // Set DB data to TextViewID
-//    holder.txtDayName.setText(dayName[position]);
+
 
         try {
+            // Set DB data to TextViewID
+            //holder.txtDayName.setText(dayName[position]);
             holder.txtDayDate.setText(dayDate[position]);
             holder.txtEntityLeadHead.setText(entityLeadHead);
             holder.txtEntityLeadSigned.setText(entityLeadSigned[position]);
@@ -155,11 +155,11 @@ public class ScheduleAdapter extends BaseAdapter
         Log.d("pos", String.valueOf(position));
 
     return convertView;
-}
+    }
 
         static class ViewHolder
     {
-//        TextView txtDayName;
+        //TextView txtDayName;
         TextView txtDayDate;
         TextView txtEntityLeadSigned;
         TextView txtEntityLeadHead;

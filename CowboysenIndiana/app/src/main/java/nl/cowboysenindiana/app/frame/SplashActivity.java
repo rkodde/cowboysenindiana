@@ -34,7 +34,7 @@ public class SplashActivity extends Activity {
 
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, ScheduleDaySignedIn.class);
+                Intent i = new Intent(SplashActivity.this, ScheduleActivity.class);
                 startActivity(i);
                 finish();
             }
