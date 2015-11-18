@@ -14,7 +14,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void goNext() {
         TextView texttexttext = (TextView) findViewById(R.id.texttexttext);
-        Toast.makeText(getApplicationContext(), texttexttext.getText(), Toast.LENGTH_LONG).show();
+        showToast("fjslfd");
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
@@ -80,25 +81,15 @@ public class ScheduleActivity extends BaseActivity{
         // Adding the gridview to the RelativeLayout as a child
         linearLayout.addView(gridView);
 
-        // set the RelativeLayout as our content view
-        setContentView(linearLayout);
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Item Clicked: " + position, Toast.LENGTH_SHORT).show();
-
+                showToast("Item Clicked: " + position);
             }
         });
-
-
     }
-
-
-
 
     @Override
     protected int getContentView() {

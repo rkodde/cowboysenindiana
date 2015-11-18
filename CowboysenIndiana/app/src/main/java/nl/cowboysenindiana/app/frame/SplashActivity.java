@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
@@ -35,12 +33,9 @@ public class SplashActivity extends Activity {
 
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(), "Gaat goed",
-                        Toast.LENGTH_LONG).show();
                 Intent i = new Intent(SplashActivity.this, ScheduleActivity.class);
                 startActivity(i);
-
-                //finish();
+                finish();
             }
         }, SPLASH_TIME_OUT);
     }
