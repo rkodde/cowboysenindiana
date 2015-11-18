@@ -1,27 +1,28 @@
 package nl.cowboysenindiana.app.frame;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.ScheduleDaySignedIn;
+import nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard;
+import nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
+import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
 /**
  * Created by Rene on 15-9-2015.
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends Activity {
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 1000;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_splash);
-//    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
 
-    @Override
-    protected void goNext(){
         ImageView logo= (ImageView) findViewById(R.id.kdv_logo);
         logo.setImageResource(R.drawable.kdv_logo);
 
@@ -34,19 +35,16 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(SplashActivity.this, ScheduleDaySignedIn.class);
+                Toast.makeText(getApplicationContext(), "Gaat goed",
+                        Toast.LENGTH_LONG).show();
+                Intent i = new Intent(SplashActivity.this, ScheduleActivity.class);
                 startActivity(i);
 
-                // close this activity
-                finish();
+                //finish();
             }
         }, SPLASH_TIME_OUT);
     }
 
-    @Override
-    protected int getLayoutResourceId() {
-        return R.layout.activity_splash;
-    }
+
+
 }

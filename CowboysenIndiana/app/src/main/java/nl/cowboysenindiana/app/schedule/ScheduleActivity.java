@@ -101,7 +101,7 @@ public class ScheduleActivity extends BaseActivity{
 
 
     @Override
-    protected int getLayoutResourceId() {
+    protected int getContentView() {
         return R.layout.schedule_main;
     }
 }

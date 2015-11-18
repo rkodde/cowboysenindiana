@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity;
@@ -20,8 +22,10 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResourceId());
+        setContentView(R.layout.base);
+        initMenu();
         goNext();
+
     }
 
     @Override
@@ -61,18 +65,13 @@ public abstract class BaseActivity extends Activity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-//    @Override
-//    protected void onBackPressed() {
-//        goBack(getPreviousActivity());
-//    }
-//
-//    public void goBack(Intent intent){
-//        startActivity(intent);
-//        finish();
-//    }
-
+    protected abstract int getContentView();
     protected abstract void goNext();
-    protected abstract int getLayoutResourceId();
-//    protected abstract Intent getPreviousActivity();
+
+    private void initMenu(){
+        RelativeLayout mainContent = (RelativeLayout)findViewById(R.id.mainContent);
+        View child = getLayoutInflater().inflate(getContentView(), null);
+        mainContent.addView(child);
+    }
 
 }

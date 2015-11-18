@@ -45,6 +45,10 @@
             android:name="nl.cowboysenindiana.app.editdata.AddChildDetail"
             android:label="@string/title_activity_add_child_detail" >
         </activity>
+        <activity
+            android:name=".Dashboard"
+            android:label="@string/title_activity_dashboard" >
+        </activity>
     </application>
 
 </manifest>

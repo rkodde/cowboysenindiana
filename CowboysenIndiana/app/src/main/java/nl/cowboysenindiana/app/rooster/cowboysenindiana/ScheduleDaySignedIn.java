@@ -8,7 +8,7 @@ import nl.cowboysenindiana.app.presencelist.ContentAdapter;
 public class ScheduleDaySignedIn extends BaseActivity {
 
     @Override
-    protected int getLayoutResourceId() {
+    protected int getContentView() {
         return R.layout.activity_dashboard;
     }
 
