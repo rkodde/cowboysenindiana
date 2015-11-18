@@ -49,6 +49,10 @@
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard" >
         </activity>
+        <activity
+            android:name="nl.cowboysenindiana.app.profile.ViewChildProfile"
+            android:label="" >
+        </activity>
     </application>
 
 </manifest>
