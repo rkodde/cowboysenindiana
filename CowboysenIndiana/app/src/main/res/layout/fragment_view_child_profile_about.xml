@@ -1,16 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:id="@+id/tab1"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-android:gravity="center">
+>
 
-<TextView
-    android:id="@+id/textViewProfileAbout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="The About Tab" />
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageViewProfileHead"
+        android:src="@drawable/child_smile8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewProfileName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/imageViewProfileHead"
+        android:text="Sjaak Banaan"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/algemene_informatie"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/imageViewProfileHead">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileTitelRelatienummer"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Relatienummer"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileRelatienummer"
+            android:layout_below="@+id/textViewProfileTitelRelatienummer"
+            android:layout_marginLeft="10dp"
+            android:text="123456789"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileTitleGeslacht"
+            android:layout_below="@+id/textViewProfileRelatienummer"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Geslacht"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileGeslacht"
+            android:layout_below="@+id/textViewProfileTitleGeslacht"
+            android:layout_marginLeft="10dp"
+            android:text="Man"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileTitleGeboortedatum"
+            android:layout_below="@+id/textViewProfileGeslacht"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Geboortedatum"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileGeboortedatum"
+            android:layout_below="@+id/textViewProfileTitleGeboortedatum"
+            android:layout_marginLeft="10dp"
+            android:text="09-07-2010"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/vaste_dagen"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/imageViewProfileHead"
+        android:layout_toRightOf="@id/algemene_informatie"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileTitelVasteDagen"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="[Vaste Dagen Calendar \n komt hier te staan]"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
