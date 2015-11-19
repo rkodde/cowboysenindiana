@@ -20,7 +20,7 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 public class ScheduleActivity extends BaseActivity{
 
-
+    protected ScheduleAdapter adapter;
 
     @Override
     protected void goNext() {
@@ -31,18 +31,87 @@ public class ScheduleActivity extends BaseActivity{
         this.setActionBarTheme();
 
 
+        // add items to gridView programmatically by changing adapter dataset:
+        // -------------------------------------------------------
 
-        for(int i=1;i<=5;i++) {
-            GridView gridView = new GridView(this);
-            //GridView gridView = (GridView) LayoutInflater.from(this).inflate(R.layout.schedule_grid_view, null);
-            gridView.setAdapter(new ScheduleAdapter(this));
-            gridView.setBackgroundResource(R.drawable.schedule_border);
-            gridView.setNumColumns(7);
-            gridView.setClipChildren(false);
-            gridView.setPadding(10, 5, 10, 5);
-            gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(gridView);
+        // make adapter for gridView
+        adapter = new ScheduleAdapter(this);
+
+        // make new String[] to hold more data for dayDate
+        int oldLength = adapter.dayDate.length;
+        String[] dayDate_new = new String[oldLength+21];
+        // add old data to new String[]
+        for (int i = 0; i < oldLength; i++){
+            dayDate_new[i] = adapter.dayDate[i];
         }
+        // add new data to new String[]
+        int p = 4;
+        for (int i = dayDate_new.length-1; i >= oldLength; i--){
+            dayDate_new[i] = String.valueOf(p);
+            p--;
+            if (p == 0){
+                p = 31;
+            }
+        }
+        // set new String[] as dayDate of adapater
+        adapter.dayDate = dayDate_new;
+
+        // do the same for entityLeadSigned and entityScheduled so we don't get array out of bounds error on those
+        oldLength = adapter.entityLeadSigned.length;
+        String[] entityLeadSigned_new = new String[oldLength+21];
+        // add old data to new String[]
+        for (int i = 0; i < oldLength; i++){
+            entityLeadSigned_new[i] = adapter.entityLeadSigned[i];
+        }
+        // add new data to new String[]
+        for (int i = dayDate_new.length-1; i >= oldLength; i--){
+            entityLeadSigned_new[i] = "Rahun";
+        }
+        // set new String[] as entityLeadSigned of adapter
+        adapter.entityLeadSigned = entityLeadSigned_new;
+
+        oldLength = adapter.entityScheduled.length;
+        String[] entityScheduled_new = new String[oldLength+21];
+        // add old data to new String[]
+        for (int i = 0; i < oldLength; i++){
+            entityScheduled_new[i] = adapter.entityScheduled[i];
+        }
+        // add new data to new String[]
+        for (int i = dayDate_new.length-1; i >= oldLength; i--){
+            entityScheduled_new[i] = "25 / 30";
+        }
+        // set new String[] as entityScheduled of adapter
+        adapter.entityScheduled = entityScheduled_new;
+
+
+        // notify adapter dataset has changed so it updates gridView
+        adapter.notifyDataSetChanged();
+
+        // ---------------------------------------------------------
+
+        // set up gridView
+        GridView gridView = new GridView(this);
+        //GridView gridView = (GridView) LayoutInflater.from(this).inflate(R.layout.schedule_grid_view, null);
+        gridView.setAdapter(adapter);
+        gridView.setBackgroundResource(R.drawable.schedule_border);
+        gridView.setNumColumns(7);
+        gridView.setClipChildren(false);
+        gridView.setPadding(10, 5, 10, 5);
+        gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
+        linearLayout.addView(gridView);
+
+
+//        for(int i=1;i<=5;i++) {
+//            GridView gridView = new GridView(this);
+//            //GridView gridView = (GridView) LayoutInflater.from(this).inflate(R.layout.schedule_grid_view, null);
+//            gridView.setAdapter(new ScheduleAdapter(this));
+//            gridView.setBackgroundResource(R.drawable.schedule_border);
+//            gridView.setNumColumns(7);
+//            gridView.setClipChildren(false);
+//            gridView.setPadding(10, 5, 10, 5);
+//            gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
+//            linearLayout.addView(gridView);
+//        }
 
         //this.generateSchedule();
         //this.generateSchedule();

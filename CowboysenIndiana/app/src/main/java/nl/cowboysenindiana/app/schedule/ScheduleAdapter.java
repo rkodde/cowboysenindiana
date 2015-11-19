@@ -36,21 +36,21 @@ public class ScheduleAdapter extends BaseAdapter {
             "","","","","","","",
             "","","","","","","",};
 
-    private String[] dayDate = {"30","1","2","3","4","5","6",
+    protected String[] dayDate = {"30","1","2","3","4","5","6",
             "7","8","9","10","11","12","13",
             "14","15","16","17","18","19","20",
             "21","22","23","24","25","26","27",
             "28","29","31","1","2","3","14"};
 
     private String entityLeadHead = "Teacher";
-    private String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","","",
+    protected String[] entityLeadSigned ={"Rohit","Rahul","Ravi","Amit","Arun","","",
             "Rohit","Rahul","Ravi","Amit","Arun","","",
             "Rohit","Rahul","Ravi","Amit","Arun","","",
             "Rohit","Rahul","Ravi","Amit","Arun","","",
             "Rohit","Rahul","Ravi","Amit","Arun","",""};
 
     private String entityScheduledHead = "Kids";
-    private String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","","",
+    protected String [] entityScheduled ={"25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","","",
             "25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","","",
             "25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","","",
             "25 / 30","25 / 30","25 / 30","25 / 30","25 / 30","","",
@@ -70,10 +70,11 @@ public class ScheduleAdapter extends BaseAdapter {
         mInflater = LayoutInflater.from(c);
     }
 
-    public int getCount()
-    {
-        return dayName.length;
+    public int getCount() {
+    //    return dayName.length;
+        return dayDate.length;
     }
+
     public Object getItem(int position)
     {
         return position;
