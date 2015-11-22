@@ -1,11 +1,7 @@
 package nl.cowboysenindiana.app.model;
 
 /**
- * Group class
- * basic class to initialise "Group" object
- * @see Child
- * @autor Sasha Antipin
- * @since 7-11-2015.
+ * Created by Tessa on 22/11/15.
  */
 public class Group {
 

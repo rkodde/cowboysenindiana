@@ -16,9 +16,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import nl.cowboysenindiana.app.data.Group;
+
 import nl.cowboysenindiana.app.database.GroupDBHandler;
 import nl.cowboysenindiana.app.frame.BaseActivity;
+import nl.cowboysenindiana.app.model.Group;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 

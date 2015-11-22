@@ -9,7 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.cowboysenindiana.app.data.Group;
+import nl.cowboysenindiana.app.model.Group;
+
 
 /**
  * Created by Tessa on 22/11/15.
