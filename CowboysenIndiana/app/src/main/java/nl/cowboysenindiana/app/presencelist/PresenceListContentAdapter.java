@@ -2,6 +2,8 @@ package nl.cowboysenindiana.app.presencelist;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,7 @@ public final class PresenceListContentAdapter extends BaseAdapter {
     private ChildToTest child;
     private String childName;
     private TextView childStatus;
+    private boolean isInside;
 
     public PresenceListContentAdapter(Context context, List<ChildToTest> children) {
         mInflater = LayoutInflater.from(context);
@@ -61,11 +64,20 @@ public final class PresenceListContentAdapter extends BaseAdapter {
 
         child = (ChildToTest) getItem(position);
         childName = child.getChildName();
+        isInside = child.isInside();
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);
         String imageId = "drawable/child_smile" + (1 + (int)(Math.random() * 8));
         final int currentImage = this.context.getResources().getIdentifier(imageId, null, context.getPackageName());
         picture.setImageResource(currentImage);
+
+        /** Converting color image to grayscale if isInside equal false --------------- */
+        if (isInside != true){
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            picture.setColorFilter(filter);
+        }
 
         UIHelper.displayText(view, R.id.text, childName);
 

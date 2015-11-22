@@ -13,7 +13,6 @@ import nl.cowboysenindiana.app.utilities.ScreenUtility;
 public class PresenceListActivity extends BaseActivity {
 
     private GridView gridView;
-    private boolean isInside;
     private List<ChildToTest> children;
 
     @Override
