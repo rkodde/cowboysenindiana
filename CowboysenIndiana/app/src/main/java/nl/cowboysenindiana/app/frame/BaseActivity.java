@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.ScheduleDaySignedIn;
+import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
 /**
@@ -44,7 +43,7 @@ public abstract class BaseActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent i = new Intent(this, ScheduleDaySignedIn.class);
+            Intent i = new Intent(this, PresenceListActivity.class);
             startActivity(i);
 
             return true;

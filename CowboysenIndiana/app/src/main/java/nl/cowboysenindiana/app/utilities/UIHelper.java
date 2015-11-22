@@ -1,16 +1,21 @@
 package nl.cowboysenindiana.app.utilities;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class UIHelper {
 
-	public static void displayText(Activity activity, int id, String text) {
-		TextView tv = (TextView) activity.findViewById(id);
-		tv.setText(text);
+	public static void displayText(View view, int id, String text) {
+		TextView name = (TextView) view.getTag(id);
+        name.setText(text);
 	}
+//	public static void displayText(Activity activity, int id, String text) {
+//		TextView tv = (TextView) activity.findViewById(id);
+//		tv.setText(text);
+//	}
 	
 	public static String getText(Activity activity, int id) {
 		EditText et = (EditText) activity.findViewById(id);

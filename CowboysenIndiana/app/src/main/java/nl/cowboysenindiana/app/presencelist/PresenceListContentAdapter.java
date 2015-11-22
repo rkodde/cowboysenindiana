@@ -12,6 +12,7 @@ import android.widget.TextView;
 import nl.cowboysenindiana.app.data.ChildToTest;
 import nl.cowboysenindiana.app.data.DataProviderToTest;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
+import nl.cowboysenindiana.app.utilities.UIHelper;
 
 import java.util.List;
 
@@ -22,31 +23,31 @@ import java.util.List;
  * @author Sasha Antipin
  * @since 27-10-2015.
  */
-public final class ContentAdapter extends BaseAdapter {
+public final class PresenceListContentAdapter extends BaseAdapter {
 
     private Dialog dialog;
-    private final List<ChildToTest> objects;
+    private final List<ChildToTest> children;
     private final LayoutInflater mInflater;
     private Context context = null;
     private ChildToTest child;
     private String childName;
     private TextView childStatus;
 
-    public ContentAdapter(Context context) {
+    public PresenceListContentAdapter(Context context, List<ChildToTest> children) {
         mInflater = LayoutInflater.from(context);
         this.context = context;
-        objects = DataProviderToTest.getData();
+        this.children = children;
     }
 
     @Override
-    public int getCount() { return objects.size(); }
+    public int getCount() { return children.size(); }
 
     @Override
-    public Object getItem(int position) { return objects.get(position); }
+    public Object getItem(int position) { return children.get(position); }
 
     @Override
     public long getItemId(int position) {
-        return objects.get(position).getChildNumber();
+        return children.get(position).getChildNumber();
     }
 
     @Override
@@ -66,8 +67,10 @@ public final class ContentAdapter extends BaseAdapter {
         final int currentImage = this.context.getResources().getIdentifier(imageId, null, context.getPackageName());
         picture.setImageResource(currentImage);
 
-        TextView name = (TextView) view.getTag(R.id.text);
-        name.setText(childName);
+        UIHelper.displayText(view, R.id.text, childName);
+
+//        TextView name = (TextView) view.getTag(R.id.text);
+//        name.setText(childName);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

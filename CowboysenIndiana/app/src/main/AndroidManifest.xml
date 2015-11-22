@@ -26,12 +26,12 @@
             android:label="November 2015" >
         </activity>
         <activity
-            android:name=".ScheduleDaySignedIn"
+            android:name=".PresenceListActivity"
             android:label="@string/title_activity_dashboard"
-            android:parentActivityName=".ScheduleDaySignedIn" >
+            android:parentActivityName=".PresenceListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ScheduleDaySignedIn" />
+                android:value=".PresenceListActivity" />
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.editdata.Correction"
