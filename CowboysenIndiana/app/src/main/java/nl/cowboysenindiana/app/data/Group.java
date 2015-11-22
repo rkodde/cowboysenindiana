@@ -16,7 +16,21 @@ public class Group {
     private String description;
     private int minAge, maxAge;
 
-    public Group(){}
+    public Group(){
+
+    }
+
+    public Group(int id, String groupName, String color){
+        this.groupID = id;
+        this.groupName = groupName;
+        this.color = color;
+    }
+
+
+    public Group(String groupName, String color){
+        this.groupName = groupName;
+        this.color = color;
+    }
 
     public String getGroupName() {
         return groupName;
