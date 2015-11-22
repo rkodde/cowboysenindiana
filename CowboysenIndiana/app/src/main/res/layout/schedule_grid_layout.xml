@@ -1,6 +1,6 @@
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gridLayoutDate"
+    android:id="@+id/scheduleGridLayoutDay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
@@ -9,22 +9,23 @@
     android:background="@drawable/schedule_border"
     android:rowCount="1" >
 
-    <!--<TextView-->
-        <!--android:id="@+id/txtDayName"-->
-        <!--android:layout_gravity="fill_horizontal"-->
-        <!--android:background="#ffffff"-->
-        <!--android:text="1," />-->
-
     <TextView
         android:id="@+id/txtDayDate"
-        android:layout_gravity="fill_horizontal"
         android:background="#ffffff"
-        android:text="1,1" />
+        android:text="1,1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:paddingLeft="0dp"
+        android:gravity="left"
+ />
 
     <TextView
         android:id="@+id/txtEntityLeadHead"
         android:layout_gravity="fill_horizontal"
         android:gravity="center"
+        android:textColor="#FFFFFF"
         android:layout_marginRight="10dp"
         android:text="2,1" />
 
@@ -32,12 +33,14 @@
         android:id="@+id/txtEntityLeadSigned"
         android:layout_gravity="fill_horizontal"
         android:background="#ffffff"
+        android:gravity="center"
         android:text="3,1" />
 
     <TextView
         android:id="@+id/txtEntityScheduledHead"
         android:layout_gravity="fill_horizontal"
         android:gravity="center"
+        android:textColor="#FFFFFF"
         android:layout_marginRight="10dp"
         android:text="4,1" />
 

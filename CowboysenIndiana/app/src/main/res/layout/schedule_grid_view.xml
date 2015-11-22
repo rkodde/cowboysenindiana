@@ -1,5 +1,5 @@
 <GridView
-    android:id="@+id/placeholder"
+    android:id="@+id/scheduleGridView"
     android:stretchMode="columnWidth"
     android:cacheColorHint="#000000"
     android:background="#034555"
