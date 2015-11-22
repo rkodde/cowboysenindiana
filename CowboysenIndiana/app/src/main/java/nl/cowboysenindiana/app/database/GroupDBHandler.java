@@ -65,12 +65,46 @@ public class GroupDBHandler extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert(TABLE_CONTACTS, null, values);
-        db.close(); // Closing database connection
+        db.close();
+    }
+
+    public Group getGroup(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_CONTACTS, new String[]{KEY_ID,
+                        KEY_NAME, KEY_COLOR}, KEY_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Group contact = new Group(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2));
+
+        return contact;
+    }
+
+    public int updateGroup(Group group) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, group.getGroupName());
+        values.put(KEY_COLOR, group.getColor());
+
+        // updating row
+        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
+                new String[] { String.valueOf(group.getGroupID()) });
+    }
+
+    public void deleteGroup(Group group) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CONTACTS, KEY_ID + " = ?",
+                new String[]{String.valueOf(group.getGroupID())});
+        db.close();
     }
 
     public List<Group> getAllGroups() {
         List<Group> contactList = new ArrayList<Group>();
-        // Select All Query
+
         String selectQuery = "SELECT  * FROM " + TABLE_CONTACTS;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -88,7 +122,7 @@ public class GroupDBHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // return contact list
+
         return contactList;
     }
 
@@ -98,8 +132,8 @@ public class GroupDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(countQuery, null);
         cursor.close();
 
-        // return count
         return cursor.getCount();
     }
+
 
 }

@@ -3,12 +3,15 @@ package nl.cowboysenindiana.app.schedule;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
+
+import static java.lang.Integer.*;
 
 /**
  * Created by Tessa on 22/11/15.
@@ -53,6 +56,17 @@ private String themeColor = "#658736";
         // Day Date
         TextView txtDayDate = (TextView) convertView.findViewById(R.id.txtDayDate);
         txtDayDate.setText(String.valueOf(objectItem.itemDayDate));
+
+        // Check if today Date, draw Circle
+        if(txtDayDate.getText().equals(String.valueOf("13"))){
+            txtDayDate.setPadding(11, 2, 0, 0);
+            Integer a = Integer.valueOf((String) txtDayDate.getText());
+            if(a > 10) { txtDayDate.setPadding(2, 0, 0, 0); }
+            txtDayDate.setBackgroundResource(R.drawable.schedule_day_border);
+            txtDayDate.setTextColor(Color.parseColor("#FFFFFF"));
+        }
+
+        Log.d("test", String.valueOf(txtDayDate.getText()));
         //textViewItem.setTag(objectItem.itemId);
 
         // Teachers Signed Header

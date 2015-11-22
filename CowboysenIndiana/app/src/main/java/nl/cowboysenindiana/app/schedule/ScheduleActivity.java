@@ -26,7 +26,7 @@ public class ScheduleActivity extends BaseActivity{
     @Override
     protected void goNext() {
 
-
+        // Get new DV
         GroupDBHandler db = new GroupDBHandler(this);
 
         // ADD Group To DB
@@ -50,14 +50,15 @@ public class ScheduleActivity extends BaseActivity{
             String leadSigned = "dd";
 
             // Set The Data of DB to Abject Day and Gen.
-            ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[15];
+            ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[14];
             for (int i = 0; i < ObjectItemData.length; i++) {
-                ObjectItemData[i] = new ScheduleObjectDay(date, leadSigned, 30);
+                String b = String.valueOf(i);
+                ObjectItemData[i] = new ScheduleObjectDay(b, leadSigned, 30);
             }
 
 
             // Log Get all DB groups back
-            String log = "Id: " + cn.getGroupID() + " ,Name: " + cn.getGroupName() + " ,Color: " + cn.getColor();
+            String log = "Id: " + cn.getGroupID() + " , " + cn.getGroupName() + " , " + cn.getColor();
             Log.d("Name: ", log);
 
             // Create new Adapter for Schedule_grid_layout
@@ -70,7 +71,7 @@ public class ScheduleActivity extends BaseActivity{
             gridView.setBackgroundResource(R.drawable.schedule_border);
             gridView.setNumColumns(7);
             gridView.setClipChildren(false);
-            gridView.setPadding(10, 5, 10, 5);
+            gridView.setPadding(10, 5, 10, 50);
             gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
             linearLayout.addView(gridView);
 
