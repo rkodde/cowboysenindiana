@@ -2,6 +2,8 @@ package nl.cowboysenindiana.app.presencelist;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import nl.cowboysenindiana.app.data.ChildToTest;
 import nl.cowboysenindiana.app.data.DataProviderToTest;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
+import nl.cowboysenindiana.app.utilities.UIHelper;
 
 import java.util.List;
 
@@ -22,31 +25,32 @@ import java.util.List;
  * @author Sasha Antipin
  * @since 27-10-2015.
  */
-public final class ContentAdapter extends BaseAdapter {
+public final class PresenceListContentAdapter extends BaseAdapter {
 
     private Dialog dialog;
-    private final List<ChildToTest> objects;
+    private final List<ChildToTest> children;
     private final LayoutInflater mInflater;
     private Context context = null;
     private ChildToTest child;
     private String childName;
     private TextView childStatus;
+    private boolean isInside;
 
-    public ContentAdapter(Context context) {
+    public PresenceListContentAdapter(Context context, List<ChildToTest> children) {
         mInflater = LayoutInflater.from(context);
         this.context = context;
-        objects = DataProviderToTest.getData();
+        this.children = children;
     }
 
     @Override
-    public int getCount() { return objects.size(); }
+    public int getCount() { return children.size(); }
 
     @Override
-    public Object getItem(int position) { return objects.get(position); }
+    public Object getItem(int position) { return children.get(position); }
 
     @Override
     public long getItemId(int position) {
-        return objects.get(position).getChildNumber();
+        return children.get(position).getChildNumber();
     }
 
     @Override
@@ -60,14 +64,25 @@ public final class ContentAdapter extends BaseAdapter {
 
         child = (ChildToTest) getItem(position);
         childName = child.getChildName();
+        isInside = child.isInside();
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);
         String imageId = "drawable/child_smile" + (1 + (int)(Math.random() * 8));
         final int currentImage = this.context.getResources().getIdentifier(imageId, null, context.getPackageName());
         picture.setImageResource(currentImage);
 
-        TextView name = (TextView) view.getTag(R.id.text);
-        name.setText(childName);
+        /** Converting color image to grayscale if isInside equal false --------------- */
+        if (isInside != true){
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            picture.setColorFilter(filter);
+        }
+
+        UIHelper.displayText(view, R.id.text, childName);
+
+//        TextView name = (TextView) view.getTag(R.id.text);
+//        name.setText(childName);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

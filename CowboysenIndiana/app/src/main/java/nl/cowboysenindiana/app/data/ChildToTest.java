@@ -15,12 +15,14 @@ public class ChildToTest {
     public static final String CHILD_NAME = "childName";
     public static final String IMAGE_RESOURCE = "imageResource";
     public static final String CHILD_NOTE = "childNote";
+    public static final String IS_INSIDE = "isInside";
 
     //	private fields
     private int childNumber;
     private String childName;
     private int imageResource;
     private String childNote;
+    private boolean isInside;
 
     // Getters and Setters --------------------------------------
     public int getChildNumber() { return childNumber; }
@@ -35,12 +37,18 @@ public class ChildToTest {
     public int getImageResource() { return imageResource; }
     public void setImageResource(int imageResource) { this.imageResource = imageResource; }
 
+    public boolean isInside() {
+        return isInside;
+    }
+    public void setIsInside(boolean isInside) {this.isInside = isInside; }
+
     // Used when creating the data object -------------------------
-    public ChildToTest(int childNumber, String childName, String childNote) {
+    public ChildToTest(int childNumber, String childName, String childNote, boolean isInside) {
         this.childNumber = childNumber;
         // this.imageResource = imageResource;
         this.childName = childName;
         this.childNote = childNote;
+        this.isInside = isInside;
     }
 
     // Create from a bundle --------------------------------------
@@ -50,6 +58,7 @@ public class ChildToTest {
             this.childName = b.getString(CHILD_NAME);
             // this.imageResource = b.getInt(IMAGE_RESOURCE);
             this.childNote = b.getString(CHILD_NOTE);
+            this.isInside = b.getBoolean(IS_INSIDE);
         }
     }
 
@@ -60,6 +69,7 @@ public class ChildToTest {
         b.putString(CHILD_NAME, this.childName);
         b.putInt(IMAGE_RESOURCE, this.imageResource);
         b.putString(CHILD_NOTE, this.childNote);
+        b.putBoolean(IS_INSIDE, this.isInside);
         return b;
     }
 

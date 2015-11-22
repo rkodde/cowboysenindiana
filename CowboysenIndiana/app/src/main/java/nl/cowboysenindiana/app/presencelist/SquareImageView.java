@@ -7,7 +7,7 @@ import android.widget.ImageView;
 /**
  * SquareImageView class
  * Make a custom ImageView that maintains its aspect ratio
- * @see ContentAdapter
+ * @see PresenceListContentAdapter
  * @author Sasha Antipin
  * @since 27-10-2015.
  */

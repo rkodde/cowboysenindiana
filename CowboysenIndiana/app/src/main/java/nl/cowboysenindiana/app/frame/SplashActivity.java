@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.MainActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
-import nl.cowboysenindiana.app.rooster.cowboysenindiana.ScheduleDaySignedIn;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
 /**

@@ -22,12 +22,15 @@ public class ScreenUtility {
         dpWidth = outMetrics.widthPixels / density;
     }
 
-    public float getWidth() {
-        return dpWidth;
-    }
+    public float getWidth() { return dpWidth; }
 
     public float getHeight() {
         return dpHeight;
+    }
+
+    public boolean isHorizontal(){
+        if (dpHeight < dpWidth) return true;
+        return false;
     }
 
 }

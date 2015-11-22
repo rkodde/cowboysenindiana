@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:verticalSpacing="1dp"
         android:horizontalSpacing="1dp"
-        android:stretchMode="columnWidth"
-        android:numColumns="6"/>
+        android:stretchMode="columnWidth"/>
 
 </LinearLayout>
