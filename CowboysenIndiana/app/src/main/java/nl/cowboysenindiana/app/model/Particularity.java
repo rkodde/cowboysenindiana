@@ -1,4 +1,4 @@
-package nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.model;
 
 /**
  * Particularity class

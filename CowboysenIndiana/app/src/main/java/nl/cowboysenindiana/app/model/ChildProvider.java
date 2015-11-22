@@ -1,11 +1,14 @@
-package nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import nl.cowboysenindiana.app.model.Person;
 
 /**
  * ChildProvider class
  * basic class to initialise "ChildProvider" object
- * @see Person, Child
+ * @see Person , Child
  * @author Sasha Antipin
  * @since 7-11-2015.
  */
@@ -23,4 +26,9 @@ public class ChildProvider extends Person {
 
     public String getComposition() { return composition; }
     public void setComposition(String composition) { this.composition = composition; }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

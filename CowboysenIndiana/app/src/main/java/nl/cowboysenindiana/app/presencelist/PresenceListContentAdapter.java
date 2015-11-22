@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import nl.cowboysenindiana.app.data.ChildToTest;
 import nl.cowboysenindiana.app.data.DataProviderToTest;
+import nl.cowboysenindiana.app.model.Child;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.utilities.UIHelper;
 
@@ -29,9 +30,11 @@ public final class PresenceListContentAdapter extends BaseAdapter {
 
     private Dialog dialog;
     private final List<ChildToTest> children;
+//    private final List<Child> children;
     private final LayoutInflater mInflater;
     private Context context = null;
     private ChildToTest child;
+//    private Child child;
     private String childName;
     private TextView childStatus;
     private boolean isInside;
@@ -50,7 +53,7 @@ public final class PresenceListContentAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return children.get(position).getChildNumber();
+        return children.get(position).getChildNumber();         // getId() for Child
     }
 
     @Override
@@ -65,6 +68,10 @@ public final class PresenceListContentAdapter extends BaseAdapter {
         child = (ChildToTest) getItem(position);
         childName = child.getChildName();
         isInside = child.isInside();
+
+//        child = (Child) getItem(position);
+//        childName = child.getFirstName() + " " + child.getLastName();
+//        isInside = Boolean.parseBoolean(child.isInside());
 
         ImageView picture = (ImageView) view.getTag(R.id.picture);
         String imageId = "drawable/child_smile" + (1 + (int)(Math.random() * 8));
