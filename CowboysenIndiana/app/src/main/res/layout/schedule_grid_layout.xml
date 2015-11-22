@@ -9,6 +9,7 @@
     android:background="@drawable/schedule_border"
     android:rowCount="1" >
 
+
     <TextView
         android:id="@+id/txtDayDate"
         android:background="#ffffff"
@@ -18,8 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="0dp"
         android:paddingLeft="0dp"
-        android:gravity="left"
- />
+        android:gravity="left" />
 
     <TextView
         android:id="@+id/txtEntityLeadHead"

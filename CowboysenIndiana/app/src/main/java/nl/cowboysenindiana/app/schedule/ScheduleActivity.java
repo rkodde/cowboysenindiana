@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -45,15 +46,23 @@ public class ScheduleActivity extends BaseActivity{
         // Loop all Groups
         for (Group cn : groups) {
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd");
-            String date = sdf.format(new Date());
-            String leadSigned = "dd";
+
+            String leadSigned = "Monica, Lowinskie";
+
+            Date today = new Date();
 
             // Set The Data of DB to Abject Day and Gen.
             ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[14];
             for (int i = 0; i < ObjectItemData.length; i++) {
-                String b = String.valueOf(i);
-                ObjectItemData[i] = new ScheduleObjectDay(b, leadSigned, 30);
+
+                if(i > 0) {
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(today);
+                    cal.add(Calendar.DATE, 1);
+
+                    today = cal.getTime();
+                }
+                ObjectItemData[i] = new ScheduleObjectDay(today, leadSigned, (25+i));
             }
 
 
