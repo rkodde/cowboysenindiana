@@ -1,4 +1,4 @@
-package nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.model;
 
 /**
  * Group class
@@ -21,7 +21,6 @@ public class Group {
     public String getGroupName() {
         return groupName;
     }
-
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
@@ -29,7 +28,6 @@ public class Group {
     public long getGroupID() {
         return groupID;
     }
-
     public void setGroupID(long groupID) {
         this.groupID = groupID;
     }
@@ -37,7 +35,6 @@ public class Group {
     public String getColor() {
         return color;
     }
-
     public void setColor(String color) {
         this.color = color;
     }
@@ -45,7 +42,6 @@ public class Group {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -61,7 +57,6 @@ public class Group {
     public int getMinAge() {
         return minAge;
     }
-
     public void setMinAge(int minAge) {
         this.minAge = minAge;
     }

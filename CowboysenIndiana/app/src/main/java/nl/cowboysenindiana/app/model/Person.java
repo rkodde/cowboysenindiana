@@ -1,4 +1,4 @@
-package nl.cowboysenindiana.app.data;
+package nl.cowboysenindiana.app.model;
 
 import android.support.annotation.StringDef;
 import java.lang.annotation.Retention;
@@ -21,7 +21,8 @@ public abstract class Person {
     private String lastName;
     private String type;
     private String gender;
-    private Map<String, String> contactInformation;
+    private String contactInformation;
+    //private Map<String, String> contactInformation;
     private Date created;
 
     public long getId() { return id; }
@@ -42,7 +43,7 @@ public abstract class Person {
     public static final String LEADER = "Leidster";
     public static final String TRAINEE = "Stagair";
     public static final String MANAGER = "Manager";
-    public static final String CHILD = "Kinder";
+    public static final String CHILD = "Kind";
 
     @StringDef({PRIMARY_PROVIDER, SECOND_PROVIDER, THIRD_PROVIDER, LEADER, TRAINEE, MANAGER, CHILD})
     @Retention(RetentionPolicy.SOURCE)
@@ -62,25 +63,30 @@ public abstract class Person {
     public static final String PHONE_NUMBER = "phone number";
     public static final String MOBILE_NUMBER = "mobile number";
 
-    public Map<String, String> getContactInformation() { return contactInformation; }
-    public void setContactInformation( String address, String zip_code, String city, String email,
-                                       String phoneNumber, String mobileNumber ) {
-        contactInformation = new HashMap<>();
-        contactInformation.put(ADDRESS, address);
-        contactInformation.put(ZIP_CODE, zip_code);
-        contactInformation.put(CITY, city);
-        contactInformation.put(EMAIL, email);
-        contactInformation.put(PHONE_NUMBER, phoneNumber);
-        contactInformation.put(MOBILE_NUMBER, mobileNumber);
+    public String getContactInformation() { return contactInformation; }
+//    public Map<String, String> getContactInformation() { return contactInformation; }
+
+    public void setContactInformation( String contactInformation ) {
+        this.contactInformation = contactInformation;
     }
+//    public void setContactInformation( String address, String zip_code, String city, String email,
+//                                       String phoneNumber, String mobileNumber ) {
+//        contactInformation = new HashMap<>();
+//        contactInformation.put(ADDRESS, address);
+//        contactInformation.put(ZIP_CODE, zip_code);
+//        contactInformation.put(CITY, city);
+//        contactInformation.put(EMAIL, email);
+//        contactInformation.put(PHONE_NUMBER, phoneNumber);
+//        contactInformation.put(MOBILE_NUMBER, mobileNumber);
+//    }
 
     /**
      * Define Gender Information ------------------------------------------
      */
     public static final String MALE = "Man";
-    public static final String FEMAILE = "Vrouw";
+    public static final String FEMALE = "Vrouw";
 
-    @StringDef({MALE, FEMAILE})
+    @StringDef({MALE, FEMALE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Gender {}
 
@@ -121,9 +127,8 @@ public abstract class Person {
 
     @Override public String toString() {
         return getClass().getName() + "[" +
-                "lastName= " + lastName + ", " +
-                "contactInformation= " + contactInformation + ", " +
-                "date= " + created.toString() + "]";
+                "firstName= " + firstName + ", " +
+                "lastName= " + lastName + "]";
     }
 
 
