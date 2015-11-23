@@ -25,10 +25,10 @@ public class ViewChildProfileAbout extends Fragment {
     private ArrayList<ListItem> listItems;
     private ListAdapter adapter;
 
-    private final int COLLAPSED_HEIGHT_1 = 150, COLLAPSED_HEIGHT_2 = 200,
+    private final int COLLAPSED_HEIGHT_1 = 110, COLLAPSED_HEIGHT_2 = 110,
             COLLAPSED_HEIGHT_3 = 250;
 
-    private final int EXPANDED_HEIGHT_1 = 250, EXPANDED_HEIGHT_2 = 300,
+    private final int EXPANDED_HEIGHT_1 = 200, EXPANDED_HEIGHT_2 = 300,
             EXPANDED_HEIGHT_3 = 350, EXPANDED_HEIGHT_4 = 400;
 
     private boolean accordion = true;
@@ -140,51 +140,33 @@ public class ViewChildProfileAbout extends Fragment {
     private void mockItems() {
         listItems
                 .add(new ListItem(
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        "Maandag \n10:00 - 17:00",
                         COLLAPSED_HEIGHT_1, COLLAPSED_HEIGHT_1,
                         EXPANDED_HEIGHT_1));
 
         listItems
                 .add(new ListItem(
-                        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                        COLLAPSED_HEIGHT_2, COLLAPSED_HEIGHT_2,
-                        EXPANDED_HEIGHT_2));
-
-        listItems
-                .add(new ListItem(
-                        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                        COLLAPSED_HEIGHT_3, COLLAPSED_HEIGHT_3,
-                        EXPANDED_HEIGHT_3));
-
-        listItems
-                .add(new ListItem(
-                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-                        COLLAPSED_HEIGHT_2, COLLAPSED_HEIGHT_2,
-                        EXPANDED_HEIGHT_4));
-
-        listItems
-                .add(new ListItem(
-                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+                        "Dinsdag \n09:00 - 15:00",
                         COLLAPSED_HEIGHT_1, COLLAPSED_HEIGHT_1,
-                        EXPANDED_HEIGHT_4));
+                        EXPANDED_HEIGHT_1));
 
         listItems
                 .add(new ListItem(
-                        "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.",
-                        COLLAPSED_HEIGHT_2, COLLAPSED_HEIGHT_2,
-                        EXPANDED_HEIGHT_4));
-
-        listItems
-                .add(new ListItem(
-                        "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.",
-                        COLLAPSED_HEIGHT_3, COLLAPSED_HEIGHT_3,
-                        EXPANDED_HEIGHT_3));
-
-        listItems
-                .add(new ListItem(
-                        "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+                        "Woensdag \n00:00 - 00:00",
                         COLLAPSED_HEIGHT_1, COLLAPSED_HEIGHT_1,
-                        EXPANDED_HEIGHT_4));
+                        EXPANDED_HEIGHT_1));
+
+        listItems
+                .add(new ListItem(
+                        "Donderdag \n10:00 - 15:00",
+                        COLLAPSED_HEIGHT_1, COLLAPSED_HEIGHT_1,
+                        EXPANDED_HEIGHT_1));
+
+        listItems
+                .add(new ListItem(
+                        "Vrijdag \n00:00 - 00:00",
+                        COLLAPSED_HEIGHT_1, COLLAPSED_HEIGHT_1,
+                        EXPANDED_HEIGHT_1));
 
     }
 
