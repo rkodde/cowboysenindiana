@@ -31,7 +31,7 @@ import nl.cowboysenindiana.app.utilities.UIHelper;
  * PresenceListActivity class
  * responsible for presentation of Presence list
  * @uses inner class PresenceListContentAdapter
- * @see BaseActivity, GridView, BaseAdapter, UIHelper, ColorMatrix, ActionMode.Callback
+ * @see BaseActivity, GridView, SquareImageView, BaseAdapter, UIHelper, ColorMatrix, ActionMode.Callback
  * @author Sasha Antipin
  * @since 16-11-2015
  * @version 0.3
@@ -89,7 +89,7 @@ public class PresenceListActivity extends BaseActivity {
 
     /** inner class PresenceListContentAdapter ====================================================
      *  to initialise GridView with content
-     *  @see BaseAdapter, UIHelper, ColorMatrix, ActionMode.Callback
+     *  @see BaseAdapter, SquareImageView, UIHelper, ColorMatrix, ActionMode.Callback
      */
     private final class PresenceListContentAdapter extends BaseAdapter {
 
