@@ -4,7 +4,13 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
@@ -60,6 +66,14 @@ public class ViewChildProfile extends BaseActivity {
         actionBar.addTab(tab);
 
     }
+
+
+
+
+
+
+
+
 
     private class TabListener<T extends Fragment> implements
             ActionBar.TabListener {

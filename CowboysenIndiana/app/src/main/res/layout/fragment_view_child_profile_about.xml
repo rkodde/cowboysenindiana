@@ -95,14 +95,13 @@ android:orientation="vertical"
         android:layout_toRightOf="@id/algemene_informatie"
         android:layout_marginLeft="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ListView
+            android:id="@+id/list_vaste_dagen"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewProfileTitelVasteDagen"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:text="[Vaste Dagen Calendar \n komt hier te staan]"
-            android:textSize="10sp" />
+            android:divider="@android:color/black"
+            android:dividerHeight="3dp" >
+        </ListView>
 
     </RelativeLayout>
 
