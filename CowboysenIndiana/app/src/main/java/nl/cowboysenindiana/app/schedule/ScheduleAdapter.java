@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
@@ -40,6 +41,8 @@ private String themeColor = "#658736";
         this.data = data;
     }
 
+
+
     public void setGroupColor(String groupColor){
         this.groupColor = groupColor;
     }
@@ -66,19 +69,22 @@ private String themeColor = "#658736";
         ScheduleObjectDay objectItem = data[position];
 
 
+
         // get the TextView
 
         Date dayDateItem = objectItem.itemDayDate;
         // Day Date
         TextView txtDayDate = (TextView) convertView.findViewById(R.id.txtDayDate);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd");
-        String dayDateItemFormat = sdf.format(dayDateItem);
+        SimpleDateFormat sdfDayFull = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdfDay = new SimpleDateFormat("dd");
+        SimpleDateFormat sdfMonth = new SimpleDateFormat("MM");
+        SimpleDateFormat sdfYear = new SimpleDateFormat("yyyyy");
 
-        txtDayDate.setText(String.valueOf(dayDateItemFormat));
 
 
-        String dateNowFormat = sdf.format(dateNow);
+        String dayDateItemFormat = sdfDayFull.format(dayDateItem);
+        String dateNowFormat = sdfDayFull.format(dateNow);
 
 
 
@@ -86,21 +92,28 @@ private String themeColor = "#658736";
         // Check if dateNow Date, draw Circle
         if(dayDateItemFormat.equals(dateNowFormat)){
             txtDayDate.setPadding(11, 2, 0, 0);
-            Integer a = Integer.valueOf((String) txtDayDate.getText());
+            Integer a = Integer.valueOf(sdfDay.format(dayDateItem));
             if(a > 10) { txtDayDate.setPadding(2, 0, 0, 0); }
             txtDayDate.setBackgroundResource(R.drawable.schedule_day_border);
             txtDayDate.setTextColor(Color.parseColor("#FFFFFF"));
+
+
         }
+        txtDayDate.setText(String.valueOf(sdfDay.format(dayDateItem)));
+
+        Log.d("test", "Date: " + dayDateItemFormat + " Today: " + dateNowFormat);
+
+        Calendar cal = Calendar.getInstance();
 
 
 
-                    Log.d("test","Date: "+dayDateItemFormat+" Today: "+dateNowFormat);
 
-//        if (date.getDate() != dateNow.getMonth() ||
-//                date.getYear() != dateNow.getYear())
+
+//        if (dayDateItem.getDate() != dateNow.getMonth() ||
+//                dayDateItem.getYear() != dateNow.getYear())
 //        {
 //            // if this day is outside current month, grey it out
-//            Log.d("test","Date: "+date+" Today: "+dateNow);
+//            Log.d("test","Date: "+dayDateItem+" Today: "+dateNow);
 //            txtDayDate.setTextColor(Color.parseColor("#FFFFFF"));
 //        }
 
@@ -126,11 +139,6 @@ private String themeColor = "#658736";
         // Kids Scheduled
         TextView itemEntityScheduled = (TextView) convertView.findViewById(R.id.txtEntityScheduled);
         itemEntityScheduled.setText(String.valueOf(objectItem.itemEntityScheduled));
-
-
-
-
-
 
 
         return convertView;
