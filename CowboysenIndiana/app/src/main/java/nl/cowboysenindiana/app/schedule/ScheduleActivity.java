@@ -25,6 +25,8 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 public class ScheduleActivity extends BaseActivity{
 
+    public Date currentDate;
+
     @Override
     protected void goNext() {
 
@@ -32,14 +34,14 @@ public class ScheduleActivity extends BaseActivity{
         GroupDBHandler db = new GroupDBHandler(this);
 
         // ADD Group To DB
-//      db.addGroup(new Group("Group 3", "#997733"));
+//      db.addGroup(new Group("Group 1", "#997733"));
+//      db.addGroup(new Group("Group 2", "#857453"));
+//      db.addGroup(new Group("Group 3", "#998634"));
+
+
 
         // Get The LinearLayout
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.scheduleLinearLayout);
-
-
-        // Set actionBarTheme
-        this.setActionBarTheme();
 
         // Get All Groups from DB
         List<Group> groups = db.getAllGroups();
@@ -87,11 +89,15 @@ public class ScheduleActivity extends BaseActivity{
 
         }
 
+        // Set actionBarTheme
+        this.setActionBarTheme();
+
     }
 
     public void setActionBarTheme(){
         // Change to getMonth();
-        this.setTitle("December 2016");
+
+        this.setTitle("December 2015");
 
         // Change to setActionBarBG(getMontPic())
         Resources res = getResources();
