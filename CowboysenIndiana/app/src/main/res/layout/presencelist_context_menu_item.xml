@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The background enables the activation appearance on tablets -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/activatedBackgroundIndicator"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/ivMenuItemImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:contentDescription="Placeholder" />
+
+    <TextView
+        android:id="@+id/tvMenuItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/ivMenuItemImage"
+        android:text="Placeholder"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+</RelativeLayout>

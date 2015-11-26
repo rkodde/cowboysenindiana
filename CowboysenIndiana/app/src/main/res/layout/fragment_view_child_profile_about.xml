@@ -37,8 +37,9 @@ android:orientation="vertical"
             android:layout_height="wrap_content"
             android:id="@+id/textViewProfileTitelRelatienummer"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:text="Relatienummer"
+            android:textStyle="bold"
             android:textSize="15sp" />
         <TextView
             android:layout_width="wrap_content"
@@ -47,7 +48,7 @@ android:orientation="vertical"
             android:layout_below="@+id/textViewProfileTitelRelatienummer"
             android:layout_marginLeft="10dp"
             android:text="123456789"
-            android:textSize="10sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +58,8 @@ android:orientation="vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="Geslacht"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +67,7 @@ android:orientation="vertical"
             android:layout_below="@+id/textViewProfileTitleGeslacht"
             android:layout_marginLeft="10dp"
             android:text="Man"
-            android:textSize="10sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,7 +77,8 @@ android:orientation="vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="Geboortedatum"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +86,7 @@ android:orientation="vertical"
             android:layout_below="@+id/textViewProfileTitleGeboortedatum"
             android:layout_marginLeft="10dp"
             android:text="09-07-2010"
-            android:textSize="10sp" />
+            android:textSize="15sp" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -93,15 +96,75 @@ android:orientation="vertical"
         android:layout_centerVertical="true"
         android:layout_below="@id/imageViewProfileHead"
         android:layout_toRightOf="@id/algemene_informatie"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="30dp">
 
         <ListView
             android:id="@+id/list_vaste_dagen"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:divider="@android:color/black"
-            android:dividerHeight="3dp" >
+            android:dividerHeight="1dp">
         </ListView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vandaag"
+        android:layout_below="@id/imageViewProfileHead"
+        android:layout_toRightOf="@id/vaste_dagen"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileTitleGroep"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Groep"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileGroep"
+            android:layout_below="@id/textViewProfileTitleGroep"
+            android:layout_marginLeft="10dp"
+            android:text="Groep B"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewProfileTitleGroep"
+            android:id="@+id/textViewProfileTitleAanwezig"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Is Vandaag Aanwezig"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewProfileAanwezig"
+            android:layout_below="@id/textViewProfileTitleAanwezig"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Aanwezig"
+            android:textSize="15sp" />
+        <ToggleButton
+            android:id="@+id/toggleButtonProfileAanwezig"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/textViewProfileTitleAanwezig"
+            android:layout_toRightOf="@id/textViewProfileAanwezig"
+            android:textOff="Nee"
+            android:textOn="Ja"
+            android:background="@drawable/toggle_button_aanwezig" />
 
     </RelativeLayout>
 
