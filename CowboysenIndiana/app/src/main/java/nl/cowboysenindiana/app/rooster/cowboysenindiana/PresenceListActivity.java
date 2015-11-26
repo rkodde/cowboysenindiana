@@ -136,13 +136,12 @@ public class PresenceListActivity extends BaseActivity {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle = child.toBundle();
 
-                    PresenceListContextMenuFragment dialog = new PresenceListContextMenuFragment();
-                    dialog.setArguments(bundle);
-                    dialog.show(getFragmentManager(), "my dialog");
+                    if (isInside != true) child.setIsInside(true);
+                    else child.setIsInside(false);
 
-
+                    PresenceListActivity.this.refreshDisplay();
+                    Toast.makeText(context, "Status geweizigd", Toast.LENGTH_SHORT).show();
                 }
             });// ---------------------------------------- closing the setOnClickListener method
 
@@ -151,11 +150,11 @@ public class PresenceListActivity extends BaseActivity {
             view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    if (isInside != true) child.setIsInside(true);
-                    else child.setIsInside(false);
+                    Bundle bundle = child.toBundle();
 
-                    PresenceListActivity.this.refreshDisplay();
-                    Toast.makeText(context, "Long Clicked", Toast.LENGTH_SHORT).show();
+                    PresenceListContextMenuFragment dialog = new PresenceListContextMenuFragment();
+                    dialog.setArguments(bundle);
+                    dialog.show(getFragmentManager(), "my dialog");
 
                     return true;
                 }
