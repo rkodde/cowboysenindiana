@@ -46,14 +46,14 @@ public abstract class BaseActivity extends Activity {
         if (id == R.id.action_group_presence_list) {
             Intent i = new Intent(this, PresenceListActivity.class);
             startActivity(i);
-
+            finish();
             return true;
         }
 
         if(id == R.id.action_schedule_main){
             Intent i = new Intent(this, ScheduleActivity.class);
             startActivity(i);
-
+            finish();
             return true;
 
         }
@@ -61,7 +61,7 @@ public abstract class BaseActivity extends Activity {
         if(id == R.id.action_view_child_profile){
             Intent i = new Intent(this, ViewChildProfile.class);
             startActivity(i);
-
+            finish();
             return true;
 
         }
