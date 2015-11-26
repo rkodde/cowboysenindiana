@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import nl.cowboysenindiana.app.profile.ViewChildProfile;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
@@ -42,7 +43,7 @@ public abstract class BaseActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_group_presence_list) {
             Intent i = new Intent(this, PresenceListActivity.class);
             startActivity(i);
 
@@ -51,6 +52,14 @@ public abstract class BaseActivity extends Activity {
 
         if(id == R.id.action_schedule_main){
             Intent i = new Intent(this, ScheduleActivity.class);
+            startActivity(i);
+
+            return true;
+
+        }
+
+        if(id == R.id.action_view_child_profile){
+            Intent i = new Intent(this, ViewChildProfile.class);
             startActivity(i);
 
             return true;

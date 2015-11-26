@@ -1,14 +1,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
+
     <item
-    android:id="@+id/action_settings"
+    android:id="@+id/action_schedule_main"
     android:orderInCategory="100"
     android:showAsAction="never"
-    android:title="Main Activaty" />
+    android:title="Dashboard" />
+
     <item
-        android:id="@+id/action_schedule_main"
+    android:id="@+id/action_group_presence_list"
+    android:orderInCategory="100"
+    android:showAsAction="never"
+    android:title="Group presence list" />
+
+    <item
+        android:id="@+id/action_view_child_profile"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="Schedule Main" />
+        android:title="Child profile" />
+
 </menu>

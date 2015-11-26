@@ -6,9 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,59 +36,67 @@ public class ScheduleActivity extends BaseActivity{
         GroupDBHandler db = new GroupDBHandler(this);
 
        //  ADD Group To DB
-      db.addGroup(new Group("Group 1", "#997733"));
-      db.addGroup(new Group("Group 2", "#857453"));
-      db.addGroup(new Group("Group 3", "#998634"));
+//      db.addGroup(new Group("Group 1", "#997733"));
+//      db.addGroup(new Group("Group 2", "#857453"));
+//      db.addGroup(new Group("Group 3", "#998634"));
 
-
-
-        // Get The LinearLayout
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.scheduleLinearLayout);
 
         // Get All Groups from DB
         List<Group> groups = db.getAllGroups();
 
+        // Get The LinearLayout
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.scheduleLinearLayout);
+
         // Loop all Groups
-        for (Group cn : groups) {
+        if(groups.size() != 0) {
+
+            for (Group cn : groups) {
 
 
-            String leadSigned = "Monica, Lowinskie";
+                String leadSigned = "Monica, Lowinskie";
 
-            Date today = new Date();
+                Date today = new Date();
 
-            // Set The Data of DB to Abject Day and Gen.
-            ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[14];
-            for (int i = 0; i < ObjectItemData.length; i++) {
+                // Set The Data of DB to Abject Day and Gen.
+                ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[14];
+                for (int i = 0; i < ObjectItemData.length; i++) {
 
-                if(i > 0) {
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(today);
-                    cal.add(Calendar.DATE, 1);
+                    if (i > 0) {
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(today);
+                        cal.add(Calendar.DATE, 1);
 
-                    today = cal.getTime();
+                        today = cal.getTime();
+                    }
+                    ObjectItemData[i] = new ScheduleObjectDay(today, leadSigned, (25 + i));
                 }
-                ObjectItemData[i] = new ScheduleObjectDay(today, leadSigned, (25+i));
+
+
+                // Log Get all DB groups back
+                String log = "Id: " + cn.getGroupID() + " , " + cn.getGroupName() + " , " + cn.getColor();
+                Log.d("Name: ", log);
+
+                // Create new Adapter for Schedule_grid_layout
+                ScheduleAdapter adapter = new ScheduleAdapter(this, R.layout.schedule_grid_layout, ObjectItemData);
+
+                // Areate a new ListView, set the adapter and item click listener
+                GridView gridView = new GridView(this);
+                gridView.setAdapter(adapter);
+                adapter.setGroupColor(cn.getColor());
+                gridView.setBackgroundResource(R.drawable.schedule_border);
+                gridView.setNumColumns(7);
+                gridView.setClipChildren(false);
+                gridView.setPadding(10, 5, 10, 50);
+                gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
+                linearLayout.addView(gridView);
+
             }
-
-
-            // Log Get all DB groups back
-            String log = "Id: " + cn.getGroupID() + " , " + cn.getGroupName() + " , " + cn.getColor();
-            Log.d("Name: ", log);
-
-            // Create new Adapter for Schedule_grid_layout
-            ScheduleAdapter adapter = new ScheduleAdapter(this, R.layout.schedule_grid_layout, ObjectItemData);
-
-            // Areate a new ListView, set the adapter and item click listener
-            GridView gridView = new GridView(this);
-            gridView.setAdapter(adapter);
-            adapter.setGroupColor(cn.getColor());
-            gridView.setBackgroundResource(R.drawable.schedule_border);
-            gridView.setNumColumns(7);
-            gridView.setClipChildren(false);
-            gridView.setPadding(10, 5, 10, 50);
-            gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(gridView);
-
+        }else{
+            TextView msg = new TextView(this);
+            msg.setText("No data available");
+            msg.setPadding(10, 10, 10, 10);
+            msg.setGravity(Gravity.CENTER | Gravity.BOTTOM);
+            linearLayout.addView(msg);
         }
 
         // Set actionBarTheme
