@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.Gravity;
@@ -32,13 +33,15 @@ public class ScheduleActivity extends BaseActivity{
     @Override
     protected void goNext() {
 
+        String cActionbarTheme = "Dashboard";
+
         // Get new DV
         GroupDBHandler db = new GroupDBHandler(this);
 
-       //  ADD Group To DB
-//      db.addGroup(new Group("Group 1", "#997733"));
-//      db.addGroup(new Group("Group 2", "#857453"));
-//      db.addGroup(new Group("Group 3", "#998634"));
+//         ADD Group To DB
+      db.addGroup(new Group("Group 1", "#997733"));
+      db.addGroup(new Group("Group 2", "#857453"));
+      db.addGroup(new Group("Group 3", "#998634"));
 
 
         // Get All Groups from DB
@@ -49,6 +52,8 @@ public class ScheduleActivity extends BaseActivity{
 
         // Loop all Groups
         if(groups.size() != 0) {
+
+
 
             for (Group cn : groups) {
 
@@ -86,10 +91,15 @@ public class ScheduleActivity extends BaseActivity{
                 gridView.setBackgroundResource(R.drawable.schedule_border);
                 gridView.setNumColumns(7);
                 gridView.setClipChildren(false);
-                gridView.setPadding(10, 5, 10, 50);
+                gridView.setPadding(5, 5, 0, 50);
                 gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
                 linearLayout.addView(gridView);
 
+
+                SimpleDateFormat sdfYear = new SimpleDateFormat("MMMM yyyy");
+                String dayDateItemFormat = sdfYear.format(today);
+
+                cActionbarTheme = dayDateItemFormat;
             }
         }else{
             TextView msg = new TextView(this);
@@ -100,14 +110,17 @@ public class ScheduleActivity extends BaseActivity{
         }
 
         // Set actionBarTheme
-        this.setActionBarTheme();
+        this.setActionBarTheme(cActionbarTheme);
 
     }
 
-    public void setActionBarTheme(){
-        // Change to getMonth();
+    public void setActionBarTheme(String cActionbarTheme){
 
-        this.setTitle("December 2015");
+
+        // Set first char Capital! Bam Bam Bam
+        cActionbarTheme = cActionbarTheme.substring(0,1).toUpperCase() + cActionbarTheme.substring(1);
+
+        this.setTitle(cActionbarTheme);
 
         // Change to setActionBarBG(getMontPic())
         Resources res = getResources();
@@ -115,11 +128,6 @@ public class ScheduleActivity extends BaseActivity{
         BitmapDrawable actionBarBackground = new BitmapDrawable(res, bMap);
         ActionBar bar = getActionBar();
         bar.setBackgroundDrawable(actionBarBackground);
-    }
-
-    public void generateSchedule(LinearLayout linearLayout){
-        Integer scheduleDayLength = 7;
-
     }
 
     @Override

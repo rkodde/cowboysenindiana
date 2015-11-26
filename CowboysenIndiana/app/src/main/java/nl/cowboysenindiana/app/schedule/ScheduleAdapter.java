@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -93,11 +94,9 @@ private String themeColor = "#658736";
         if(dayDateItemFormat.equals(dateNowFormat)){
             txtDayDate.setPadding(11, 2, 0, 0);
             Integer a = Integer.valueOf(sdfDay.format(dayDateItem));
-            if(a > 10) { txtDayDate.setPadding(2, 0, 0, 0); }
-            txtDayDate.setBackgroundResource(R.drawable.schedule_day_border);
-            txtDayDate.setTextColor(Color.parseColor("#FFFFFF"));
-
-
+            if(a > 10) { txtDayDate.setPadding(18, 0, 0, 0); }
+            //txtDayDate.setBackgroundResource(R.drawable.schedule_day_border);
+            txtDayDate.setTextColor(Color.parseColor("#444444"));
         }
         txtDayDate.setText(String.valueOf(sdfDay.format(dayDateItem)));
 
@@ -122,7 +121,7 @@ private String themeColor = "#658736";
 
         // Teachers Signed Header
         TextView txtLeadSignedHead = (TextView) convertView.findViewById(R.id.txtEntityLeadHead);
-        txtLeadSignedHead.setBackgroundResource(R.drawable.schedule_border);
+        //txtLeadSignedHead.setBackgroundResource(R.drawable.schedule_border);
         txtLeadSignedHead.setBackgroundColor(Color.parseColor(groupColor));
         txtLeadSignedHead.setText("Teacher");
 
@@ -132,7 +131,7 @@ private String themeColor = "#658736";
 
         // Kids Scheduled Head
         TextView itemEntityScheduledHead = (TextView) convertView.findViewById(R.id.txtEntityScheduledHead);
-        itemEntityScheduledHead.setBackgroundResource(R.drawable.schedule_border);
+        //itemEntityScheduledHead.setBackgroundResource(R.drawable.schedule_border);
         itemEntityScheduledHead.setBackgroundColor(Color.parseColor(groupColor));
         itemEntityScheduledHead.setText("Kids");
 
@@ -140,7 +139,7 @@ private String themeColor = "#658736";
         TextView itemEntityScheduled = (TextView) convertView.findViewById(R.id.txtEntityScheduled);
         itemEntityScheduled.setText(String.valueOf(objectItem.itemEntityScheduled));
 
-
+        convertView.setBackgroundResource(R.drawable.schedule_border);
         return convertView;
 
     }

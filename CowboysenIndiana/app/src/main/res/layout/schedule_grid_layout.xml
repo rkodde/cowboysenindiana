@@ -6,7 +6,6 @@
     android:clipChildren="false"
     android:columnCount="1"
     android:orientation="horizontal"
-    android:background="@drawable/schedule_border"
     android:rowCount="1" >
 
 
@@ -14,11 +13,12 @@
         android:id="@+id/txtDayDate"
         android:background="#ffffff"
         android:text="1,1"
-        android:layout_width="20dp"
+        android:layout_gravity="fill_horizontal"
         android:layout_height="20dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="0dp"
-        android:paddingLeft="0dp"
+        android:paddingLeft="3dp"
+        android:layout_weight="0.5"
         android:gravity="left" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_gravity="fill_horizontal"
         android:gravity="center"
         android:textColor="#FFFFFF"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="5dp"
         android:text="2,1" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_gravity="fill_horizontal"
         android:gravity="center"
         android:textColor="#FFFFFF"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="5dp"
         android:text="4,1" />
 
     <TextView
