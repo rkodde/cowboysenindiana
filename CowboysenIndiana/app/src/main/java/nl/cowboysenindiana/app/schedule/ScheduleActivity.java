@@ -33,10 +33,10 @@ public class ScheduleActivity extends BaseActivity{
         // Get new DV
         GroupDBHandler db = new GroupDBHandler(this);
 
-        // ADD Group To DB
-//      db.addGroup(new Group("Group 1", "#997733"));
-//      db.addGroup(new Group("Group 2", "#857453"));
-//      db.addGroup(new Group("Group 3", "#998634"));
+       //  ADD Group To DB
+      db.addGroup(new Group("Group 1", "#997733"));
+      db.addGroup(new Group("Group 2", "#857453"));
+      db.addGroup(new Group("Group 3", "#998634"));
 
 
 

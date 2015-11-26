@@ -35,8 +35,8 @@ public class PresenceListContextMenuFragment extends DialogFragment {
     private List<MenuItem> menuItems;
 
     private PresenceListContextMenuFragment.MenuItem[] f = {
-            new PresenceListContextMenuFragment.MenuItem ("item #1", R.drawable.ic_close_circle_black_48dp),
-            new PresenceListContextMenuFragment.MenuItem ("item #2", R.drawable.ic_close_circle_black_48dp),
+            new PresenceListContextMenuFragment.MenuItem ("item #1", R.drawable.ic_account_check_grey600_48dp),
+            new PresenceListContextMenuFragment.MenuItem ("item #2", R.drawable.ic_account_multiple_grey600_48dp),
             new PresenceListContextMenuFragment.MenuItem ("item #3", R.drawable.ic_close_circle_black_48dp)
     };
 
