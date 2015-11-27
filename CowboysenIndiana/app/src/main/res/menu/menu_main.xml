@@ -5,19 +5,16 @@
     <item
     android:id="@+id/action_schedule_main"
     android:orderInCategory="100"
-    android:showAsAction="never"
     android:title="Dashboard" />
 
     <item
     android:id="@+id/action_group_presence_list"
     android:orderInCategory="100"
-    android:showAsAction="never"
     android:title="Group presence list" />
 
     <item
         android:id="@+id/action_view_child_profile"
         android:orderInCategory="100"
-        android:showAsAction="never"
         android:title="Child profile" />
 
 </menu>

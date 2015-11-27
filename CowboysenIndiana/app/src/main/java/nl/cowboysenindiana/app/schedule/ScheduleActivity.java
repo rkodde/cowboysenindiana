@@ -134,4 +134,7 @@ public class ScheduleActivity extends BaseActivity{
     protected int getContentView() {
         return R.layout.schedule_main;
     }
+
+    @Override
+    protected int getMenuView() {return R.menu.menu_main;}
 }

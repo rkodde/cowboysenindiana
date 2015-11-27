@@ -26,6 +26,9 @@ public class ViewChildProfile extends BaseActivity {
     }
 
     @Override
+    protected int getMenuView() {return R.menu.menu_main;}
+
+    @Override
     public void goNext() {
         //super.onCreate(savedInstanceState);
 

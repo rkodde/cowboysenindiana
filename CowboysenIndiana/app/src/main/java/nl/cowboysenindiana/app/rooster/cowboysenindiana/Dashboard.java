@@ -11,6 +11,7 @@ public class Dashboard extends BaseActivity {
     protected int getContentView() {
         return R.layout.activity_dashboard;
     }
+    protected int getMenuView() {return R.menu.menu_main;}
 
     @Override
     protected void goNext(){

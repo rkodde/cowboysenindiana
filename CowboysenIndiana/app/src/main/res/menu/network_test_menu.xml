@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_do_task"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Gogo" />
+    <item
+        android:id="@+id/action_empty"
+        android:orderInCategory="99"
+        android:showAsAction="always"
+        android:title="empty" />
+
+</menu>

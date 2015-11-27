@@ -54,6 +54,9 @@ public class PresenceListActivity extends BaseActivity {
         return R.layout.activity_dashboard;
     }
 
+    @Override
+    protected int getMenuView() {return R.menu.menu_main;}
+
 
     @Override
     protected void goNext() {

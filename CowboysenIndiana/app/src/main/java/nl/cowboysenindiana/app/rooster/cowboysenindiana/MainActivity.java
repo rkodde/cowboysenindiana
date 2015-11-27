@@ -22,4 +22,7 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected int getMenuView() {return R.menu.menu_main;}
+
 }

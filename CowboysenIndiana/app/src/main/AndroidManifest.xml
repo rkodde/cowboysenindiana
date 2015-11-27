@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nl.cowboysenindiana.app.rooster.cowboysenindiana" >
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +26,10 @@
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.schedule.ScheduleActivity"
+            android:label="November 2015" >
+        </activity>
+        <activity
+            android:name="nl.cowboysenindiana.app.networkTest.MainActivity"
             android:label="November 2015" >
         </activity>
         <activity
