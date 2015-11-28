@@ -46,42 +46,42 @@ public abstract class BaseActivity extends Activity {
         goNext();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(getMenuView(), menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(getMenuView(), menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_group_presence_list) {
-            Intent i = new Intent(this, PresenceListActivity.class);
-            startActivity(i);
-            finish();
-            return true;
-        }
-
-        if(id == R.id.action_schedule_main){
-            Intent i = new Intent(this, ScheduleActivity.class);
-            startActivity(i);
-            finish();
-            return true;
-
-        }
-
-        if(id == R.id.action_view_child_profile){
-            Intent i = new Intent(this, ViewChildProfile.class);
-            startActivity(i);
-            finish();
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_group_presence_list) {
+//            Intent i = new Intent(this, PresenceListActivity.class);
+//            startActivity(i);
+//            finish();
+//            return true;
+//        }
+//
+//        if(id == R.id.action_schedule_main){
+//            Intent i = new Intent(this, ScheduleActivity.class);
+//            startActivity(i);
+//            finish();
+//            return true;
+//
+//        }
+//
+//        if(id == R.id.action_view_child_profile){
+//            Intent i = new Intent(this, ViewChildProfile.class);
+//            startActivity(i);
+//            finish();
+//            return true;
+//        }
+//        return false;
+//    }
 
     protected boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -139,6 +139,7 @@ public abstract class BaseActivity extends Activity {
     private boolean selectItemFromDrawer(int position) {
         Intent i = new Intent(this, mNavItems.get(position).mNewActivity);
         startActivity(i);
+        finish();
         return true;
     }
 
