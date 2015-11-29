@@ -1,6 +1,9 @@
 package nl.cowboysenindiana.app.profile;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,6 +34,8 @@ public class ViewChildProfileAbout extends Fragment {
 
     private boolean accordion = true;
 
+    @TargetApi(Build.VERSION_CODES.M)
+    @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,9 +46,9 @@ public class ViewChildProfileAbout extends Fragment {
         listItems = new ArrayList<ListItem>();
         mockItems();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            adapter = new ListAdapter(getContext(), R.layout.profile_list_item, listItems);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            adapter = new ListAdapter(container.getContext(), R.layout.profile_list_item, listItems);
+//        }
 
         listView.setAdapter(adapter);
 
