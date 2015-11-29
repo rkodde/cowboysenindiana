@@ -13,6 +13,9 @@ import java.util.List;
 
 import nl.cowboysenindiana.app.data.ChildToTest;
 import nl.cowboysenindiana.app.editdata.AddChildDetail;
+import nl.cowboysenindiana.app.editdata.Correction;
+import nl.cowboysenindiana.app.editdata.RangeSeekBar;
+import nl.cowboysenindiana.app.profile.ViewChildProfile;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
@@ -35,16 +38,19 @@ public class PresenceListContextMenuFragment extends DialogFragment {
     private List<MenuItem> menuItems;
 
     private PresenceListContextMenuFragment.MenuItem[] f = {
-            new PresenceListContextMenuFragment.MenuItem ("item #1", R.drawable.ic_account_check_grey600_48dp),
-            new PresenceListContextMenuFragment.MenuItem ("item #2", R.drawable.ic_account_multiple_grey600_48dp),
-            new PresenceListContextMenuFragment.MenuItem ("item #3", R.drawable.ic_close_circle_black_48dp)
+            new PresenceListContextMenuFragment.MenuItem ("Aanwezig", R.drawable.ic_account_check_grey600_48dp),
+            new PresenceListContextMenuFragment.MenuItem ("Profiel", R.drawable.ic_account_multiple_grey600_48dp),
+            new PresenceListContextMenuFragment.MenuItem ("Correctie", R.drawable.ic_close_circle_black_48dp)
     };
 
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        getActivity().setContentView(R.layout.precenselist_context_menu);
+        //getActivity().setContentView(R.layout.precenselist_context_menu);
+        // Out comment this for dialog display on same page
+
+
         menuItems = Arrays.asList(f);
         bundle = getArguments();
         child = new ChildToTest(bundle);
@@ -78,18 +84,18 @@ public class PresenceListContextMenuFragment extends DialogFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0:
-                        intent = new Intent(getActivity(), ScheduleActivity.class);
+                    case 0: // Aanwezig
+                        intent = new Intent(getActivity(), RangeSeekBar.class);
                         intent.putExtra(CHILD_BUNDLE, bundle);
                         startActivity(intent);
                         break;
-                    case 1:
-                        intent = new Intent(getActivity(), AddChildDetail.class);
+                    case 1: // Profiel
+                        intent = new Intent(getActivity(), ViewChildProfile.class);
                         intent.putExtra(CHILD_BUNDLE, bundle);
                         startActivity(intent);
                         break;
-                    case 3:
-                        intent = new Intent(getActivity(), ScheduleActivity.class);
+                    case 2: // Correctie
+                        intent = new Intent(getActivity(), Correction.class);
                         intent.putExtra(CHILD_BUNDLE, bundle);
                         startActivity(intent);
                         break;

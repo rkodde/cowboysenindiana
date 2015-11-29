@@ -1,6 +1,7 @@
 package nl.cowboysenindiana.app.schedule;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,8 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -23,6 +26,7 @@ import java.util.List;
 import nl.cowboysenindiana.app.database.GroupDBHandler;
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.model.Group;
+import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 
@@ -39,9 +43,9 @@ public class ScheduleActivity extends BaseActivity{
         GroupDBHandler db = new GroupDBHandler(this);
 
 //         ADD Group To DB
-      db.addGroup(new Group("Group 1", "#997733"));
-      db.addGroup(new Group("Group 2", "#857453"));
-      db.addGroup(new Group("Group 3", "#998634"));
+//      db.addGroup(new Group("Group 1", "#997733"));
+//      db.addGroup(new Group("Group 2", "#857453"));
+//      db.addGroup(new Group("Group 3", "#998634"));
 
 
         // Get All Groups from DB
@@ -63,7 +67,7 @@ public class ScheduleActivity extends BaseActivity{
                 Date today = new Date();
 
                 // Set The Data of DB to Abject Day and Gen.
-                ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[14];
+                ScheduleObjectDay[] ObjectItemData = new ScheduleObjectDay[31];
                 for (int i = 0; i < ObjectItemData.length; i++) {
 
                     if (i > 0) {
@@ -94,6 +98,14 @@ public class ScheduleActivity extends BaseActivity{
                 gridView.setPadding(5, 5, 0, 50);
                 gridView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
                 linearLayout.addView(gridView);
+
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        selectItemFromDrawer(position);
+                        showToast("" + id);
+                    }
+                });
 
 
                 SimpleDateFormat sdfYear = new SimpleDateFormat("MMMM yyyy");
@@ -137,4 +149,10 @@ public class ScheduleActivity extends BaseActivity{
 
     @Override
     protected int getMenuView() {return R.menu.menu_main;}
+
+    private boolean selectItemFromDrawer(int position) {
+        Intent i = new Intent(this, PresenceListActivity.class);
+        startActivity(i);
+        return true;
+    }
 }

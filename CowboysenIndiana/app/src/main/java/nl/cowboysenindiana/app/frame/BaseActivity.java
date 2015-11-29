@@ -109,9 +109,10 @@ public abstract class BaseActivity extends Activity {
         View child = getLayoutInflater().inflate(getContentView(), null);
         mainContent.addView(child);
 
-        mNavItems.add(new NavItem("Dashboard", "Meetup destination", R.drawable.ic_add_white_48dp, Dashboard.class));
-        mNavItems.add(new NavItem("Schedule", "Change your preferences", R.drawable.ic_add_white_48dp, ScheduleActivity.class));
+        mNavItems.add(new NavItem("Dashboard", "Meetup destination", R.drawable.ic_add_white_48dp, ScheduleActivity.class));
+//        mNavItems.add(new NavItem("Schedule", "Change your preferences", R.drawable.ic_add_white_48dp, ScheduleActivity.class));
         mNavItems.add(new NavItem("Signed in", "Get to know about us", R.drawable.ic_add_white_48dp, PresenceListActivity.class));
+        mNavItems.add(new NavItem("Child Profile", "Get to know the child", R.drawable.ic_add_white_48dp, ViewChildProfile.class));
         mNavItems.add(new NavItem("Network Test", "To test the network files", R.drawable.ic_add_white_48dp, MainActivity.class));
 
         // DrawerLayout
