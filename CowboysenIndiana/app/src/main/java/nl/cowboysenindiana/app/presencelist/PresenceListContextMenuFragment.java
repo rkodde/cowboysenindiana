@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import nl.cowboysenindiana.app.data.ChildToTest;
+import nl.cowboysenindiana.app.editdata.AddChild;
 import nl.cowboysenindiana.app.editdata.AddChildDetail;
 import nl.cowboysenindiana.app.editdata.Correction;
 import nl.cowboysenindiana.app.editdata.RangeSeekBar;
@@ -38,7 +39,7 @@ public class PresenceListContextMenuFragment extends DialogFragment {
     private List<MenuItem> menuItems;
 
     private PresenceListContextMenuFragment.MenuItem[] f = {
-            new PresenceListContextMenuFragment.MenuItem ("Aanwezig", R.drawable.ic_account_check_grey600_48dp),
+//            new PresenceListContextMenuFragment.MenuItem ("Aanwezig", R.drawable.ic_account_check_grey600_48dp),
             new PresenceListContextMenuFragment.MenuItem ("Profiel", R.drawable.ic_account_multiple_grey600_48dp),
             new PresenceListContextMenuFragment.MenuItem ("Correctie", R.drawable.ic_close_circle_black_48dp)
     };
@@ -85,17 +86,17 @@ public class PresenceListContextMenuFragment extends DialogFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0: // Aanwezig
-                        intent = new Intent(getActivity(), RangeSeekBar.class);
-                        intent.putExtra(CHILD_BUNDLE, bundle);
-                        startActivity(intent);
-                        break;
-                    case 1: // Profiel
+//                    case 0: // Aanwezig
+//                        intent = new Intent(getActivity(), AddChildDetail.class);
+//                        intent.putExtra(CHILD_BUNDLE, bundle);
+//                        startActivity(intent);
+//                        break;
+                    case 0: // Profiel
                         intent = new Intent(getActivity(), ViewChildProfile.class);
                         intent.putExtra(CHILD_BUNDLE, bundle);
                         startActivity(intent);
                         break;
-                    case 2: // Correctie
+                    case 1: // Correctie
                         intent = new Intent(getActivity(), Correction.class);
                         intent.putExtra(CHILD_BUNDLE, bundle);
                         startActivity(intent);
