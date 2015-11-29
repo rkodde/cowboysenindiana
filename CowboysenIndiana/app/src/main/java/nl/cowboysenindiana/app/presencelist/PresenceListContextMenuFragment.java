@@ -81,6 +81,7 @@ public class PresenceListContextMenuFragment extends DialogFragment {
              * @param position The position of the view in the adapter.
              * @param id       The row id of the item that was clicked.
              */
+            //@// TODO: 29/11/15 Correction screen needs to be a Dialog also.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {

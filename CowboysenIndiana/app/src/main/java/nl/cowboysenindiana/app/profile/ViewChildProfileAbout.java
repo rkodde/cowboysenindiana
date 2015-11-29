@@ -1,6 +1,7 @@
 package nl.cowboysenindiana.app.profile;
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,9 @@ public class ViewChildProfileAbout extends Fragment {
         listItems = new ArrayList<ListItem>();
         mockItems();
 
-        adapter = new ListAdapter(getContext(), R.layout.profile_list_item, listItems);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            adapter = new ListAdapter(getContext(), R.layout.profile_list_item, listItems);
+        }
 
         listView.setAdapter(adapter);
 
