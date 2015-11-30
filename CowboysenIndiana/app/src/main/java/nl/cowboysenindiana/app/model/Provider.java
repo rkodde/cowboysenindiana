@@ -12,12 +12,12 @@ import nl.cowboysenindiana.app.model.Person;
  * @author Sasha Antipin
  * @since 7-11-2015.
  */
-public class ChildProvider extends Person {
+public class Provider extends Person {
 
     private String appeal;
     private String composition;
 
-    private ChildProvider(){
+    private Provider(){
         super.setDateCreated(new Date());
     }
 

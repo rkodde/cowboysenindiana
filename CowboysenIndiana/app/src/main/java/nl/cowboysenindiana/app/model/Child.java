@@ -1,9 +1,6 @@
 package nl.cowboysenindiana.app.model;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Child class
@@ -19,7 +16,7 @@ public class Child extends Person {
 //    private List<Particularity> particularities;
     private String providers;
 //    private List<ChildProvider> providers;
-    private ChildProvider primaryProvider;
+    private Provider primaryProvider;
     private Date dateOfPlacement;
     private String image;
     private String isInside;
@@ -46,8 +43,8 @@ public class Child extends Person {
 //    public void setChildProviders(List<ChildProvider> providers) { this.providers = providers; }
 //    public void addChildProvider(ChildProvider childProvider) { this.providers.add(childProvider); }
 
-    public ChildProvider getPrimaryChildProvider() { return primaryProvider; }
-    public void setPrimaryChildProvider(ChildProvider primaryProvider) { this.primaryProvider = primaryProvider; }
+    public Provider getPrimaryChildProvider() { return primaryProvider; }
+    public void setPrimaryChildProvider(Provider primaryProvider) { this.primaryProvider = primaryProvider; }
 
     public Date getDateOfPlacement() { return dateOfPlacement; }
     public void setDateOfPlacement(Date dateOfPlacement) { this.dateOfPlacement = dateOfPlacement; }
