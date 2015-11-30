@@ -2,6 +2,7 @@ package nl.cowboysenindiana.app.networkTest;
 
 import android.os.AsyncTask;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -60,8 +61,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int getContentView() {return R.layout.activity_main;}
 
+
     @Override
-    protected int getMenuView() {return R.menu.network_test_menu;}
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.network_test_menu, menu);
+        return true;
+    }
 
     private void updateDisplay(){
         if (person_model_list != null) {

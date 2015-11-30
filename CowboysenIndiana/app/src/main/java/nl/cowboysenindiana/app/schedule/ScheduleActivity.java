@@ -147,9 +147,6 @@ public class ScheduleActivity extends BaseActivity{
         return R.layout.schedule_main;
     }
 
-    @Override
-    protected int getMenuView() {return R.menu.menu_main;}
-
     private boolean selectItemFromDrawer(int position) {
         Intent i = new Intent(this, PresenceListActivity.class);
         startActivity(i);

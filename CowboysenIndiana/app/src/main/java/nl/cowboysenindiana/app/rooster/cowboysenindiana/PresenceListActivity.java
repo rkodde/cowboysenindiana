@@ -55,10 +55,6 @@ public class PresenceListActivity extends BaseActivity {
     }
 
     @Override
-    protected int getMenuView() {return R.menu.menu_main;}
-
-
-    @Override
     protected void goNext() {
 
         showToast("get data for PresenceList");

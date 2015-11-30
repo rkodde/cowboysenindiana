@@ -46,12 +46,9 @@ public abstract class BaseActivity extends Activity {
         goNext();
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(getMenuView(), menu);
-//        return true;
-//    }
+
+
+
 
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
@@ -99,7 +96,6 @@ public abstract class BaseActivity extends Activity {
     }
 
     protected abstract int getContentView();
-    protected abstract int getMenuView();
 
     protected abstract void goNext();
 //    protected abstract Boolean setItemsSelected();
