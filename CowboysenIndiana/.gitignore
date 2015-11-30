@@ -32,5 +32,12 @@ proguard/
 # Android Studio captures folder
 captures/
 
+#own
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/workspace.xml
+cowboysenIndiana.iml
+app/app.iml
+
 ### Android Patch ###
 gen-external-apklibs
