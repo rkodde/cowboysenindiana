@@ -33,9 +33,7 @@ proguard/
 captures/
 
 #own
-.idea/inspectionProfiles/
-.idea/libraries/
-.idea/workspace.xml
+.idea/
 cowboysenIndiana.iml
 app/app.iml
 
