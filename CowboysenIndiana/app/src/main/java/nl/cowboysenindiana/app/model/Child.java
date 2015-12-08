@@ -11,20 +11,21 @@ import java.util.Date;
  */
 public class Child extends Person {
 
-    private Date birthDay;
-    private String particularities;
+    private Date        birthDay;
+    private String      particularities;
 //    private List<Particularity> particularities;
-    private String providers;
+    private String      providers;
 //    private List<ChildProvider> providers;
-    private Provider primaryProvider;
-    private Date dateOfPlacement;
-    private String image;
-    private String isInside;
+    private Provider    primaryProvider;
+    private Date        dateOfPlacement;
+    private String      image;
+    private String      isInside;
 
     public Child(){
         super.setPersonType(CHILD);
         super.setDateCreated(new Date());
     }
+
 
     public Date getBirthDay() { return birthDay; }
     public void setBirthDay(Date birthDay) { this.birthDay = birthDay; }
