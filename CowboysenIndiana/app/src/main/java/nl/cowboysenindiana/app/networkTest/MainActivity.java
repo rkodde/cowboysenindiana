@@ -17,11 +17,14 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 public class MainActivity extends BaseActivity {
 
-    TextView output;
-    ProgressBar progressBar;
-    List<MyTask> myTasks;
+    TextView output; // type output
+    ProgressBar progressBar; // om gebruikers te laten zien dat de app op de achtergrond iets doet
+    List<MyTask> myTasks; //Lijst van je threads.
 
-    List<Person_model> person_model_list;
+    List<Person_model> person_model_list; // Je model. Is een list als je een lijst wilt weergeven
+
+    @Override
+    protected int getContentView() {return R.layout.activity_main;}
 
     @Override
     protected void goNext() {
@@ -36,10 +39,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /* Deze method is specifiek voor deze activity. */
         int id = item.getItemId();
         if (id == R.id.action_do_task) {
             if (isOnline()) {
-                requestData(urls.TEST);
+                // Dit is stap 1. RequestData wordt aangeroepen. Je stuurt hier in de URL mee
+                requestData(urls.TEST); // In mijn geval is dat een testpagina
             } else {
                 showToast("Geen netwerk verbinding");
             }
@@ -50,28 +55,6 @@ public class MainActivity extends BaseActivity {
         return false;
     }
 
-    private void requestData(String uri) {
-
-        RequestPackage p = new RequestPackage();
-
-        p.setMethod("POST"); // Deze mag je op POST laten staan
-        p.setUri(uri);
-        p.setParam("person_id", "2"); // Dit zijn je params, je kan er meerdere mee sturen.
-
-        Log.e("getParam", p.getEncodedParams());
-
-        MyTask mytask = new MyTask();
-        mytask.execute(p);
-    }
-
-    private void clearDisplay() {
-        output.setText("");
-    }
-
-    @Override
-    protected int getContentView() {return R.layout.activity_main;}
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -79,7 +62,28 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
-    private void updateDisplay(){
+    private void requestData(String uri) {
+        //Eerst wordt de Request package geinstantieerd. Hierin worden oa de parameters opgeslagen
+        RequestPackage p = new RequestPackage();
+
+        p.setMethod("POST"); // Deze mag je op POST laten staan
+        p.setUri(uri);
+        p.setParam("person_id", "2"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
+
+        Log.e("getParam", p.getEncodedParams()); //logging
+
+        MyTask mytask = new MyTask(); // Dit is wel vereist.
+        // Hiermee kan je de thread die met de server connect scheiden van de thread voor de weergave (loader animmatie)
+        mytask.execute(p); // en gaan
+    }
+
+    //specifiek voor mijn activity, om de display weer leeg te maken. Negeer dit
+    private void clearDisplay() {
+        output.setText("");
+    }
+
+    // De method die er voor zorgt dat de output die je krijgt wordt weergegeven in je layout
+    private void updateDisplay() {
         if (person_model_list != null) {
             for (Person_model person_model : person_model_list ) {
                 output.append(person_model.getFirstName() + " " + person_model.getLastName());
@@ -90,9 +94,11 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    // Vereist. Copy->paste, en hier en daar wat aanpassen
     private class MyTask extends AsyncTask<RequestPackage, String, String>
     {
         protected void onPreExecute() {
+            // init progressbar. Zorg er voor dat je een progressbar hebt
             if (myTasks.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
             }
@@ -101,18 +107,18 @@ public class MainActivity extends BaseActivity {
 
         @Override
         protected String doInBackground(RequestPackage... params) {
-            Log.e("getParam", params[0].getEncodedParams());
+            //Laat je httpmanager de data versturen en ophalen.
             String content = HttpManager.getData(params[0]);
             return content;
         }
 
         protected void onPostExecute(String result) {
-            Log.e("result",result);
+            // Vang je result op, en voer het aan je parser die het omzet naar een java model
             person_model_list = Person_model_JSON_parser.parseFeed(result);
 
             updateDisplay();
 
-            myTasks.remove(this);
+            myTasks.remove(this); // om ervoor te zorgen dat als er geen taak meer is, de progressbar uit te zetten
 
             if (myTasks.size() == 0) {
                 progressBar.setVisibility(View.INVISIBLE);
@@ -120,7 +126,7 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        protected void onProgressUpdate(String... values) {
+        protected void onProgressUpdate(String... values) { // Ja eigenlijk geen idee ._.
 //            updateDisplay(values[0]);
         }
     }
