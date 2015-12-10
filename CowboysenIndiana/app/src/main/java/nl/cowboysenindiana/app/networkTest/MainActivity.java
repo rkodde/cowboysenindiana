@@ -2,6 +2,7 @@ package nl.cowboysenindiana.app.networkTest;
 
 import android.os.AsyncTask;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.action_do_task) {
             if (isOnline()) {
-                requestData(URL_GET_CHILDS);
+                requestData(urls.TEST);
             } else {
                 showToast("Geen netwerk verbinding");
             }
@@ -50,8 +51,17 @@ public class MainActivity extends BaseActivity {
     }
 
     private void requestData(String uri) {
+
+        RequestPackage p = new RequestPackage();
+
+        p.setMethod("POST"); // Deze mag je op POST laten staan
+        p.setUri(uri);
+        p.setParam("person_id", "2"); // Dit zijn je params, je kan er meerdere mee sturen.
+
+        Log.e("getParam", p.getEncodedParams());
+
         MyTask mytask = new MyTask();
-        mytask.execute(uri);
+        mytask.execute(p);
     }
 
     private void clearDisplay() {
@@ -72,12 +82,15 @@ public class MainActivity extends BaseActivity {
     private void updateDisplay(){
         if (person_model_list != null) {
             for (Person_model person_model : person_model_list ) {
-                output.append(person_model.getFirstName() + "\n");
+                output.append(person_model.getFirstName() + " " + person_model.getLastName());
+//                output.append(person_model.getFirstName() + "\n");
             }
+        } else {
+            Log.e("leeg", "jup");
         }
     }
 
-    private class MyTask extends AsyncTask<String, String, String>
+    private class MyTask extends AsyncTask<RequestPackage, String, String>
     {
         protected void onPreExecute() {
             if (myTasks.size() == 0) {
@@ -87,14 +100,14 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        protected String doInBackground(String... params) {
-
+        protected String doInBackground(RequestPackage... params) {
+            Log.e("getParam", params[0].getEncodedParams());
             String content = HttpManager.getData(params[0]);
             return content;
         }
 
         protected void onPostExecute(String result) {
-
+            Log.e("result",result);
             person_model_list = Person_model_JSON_parser.parseFeed(result);
 
             updateDisplay();

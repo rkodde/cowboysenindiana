@@ -24,17 +24,18 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
+import nl.cowboysenindiana.app.network.URL;
 
 /**
  * Created by Rene on 12-11-2015.
  */
 public abstract class BaseActivity extends Activity {
 
-    final public String URL_GET_CHILDS = "http://rkodde.nl/kdv/retrieve_kids.php";
     ListView mDrawerList;
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
+    public URL urls;
 
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
@@ -82,7 +83,8 @@ public abstract class BaseActivity extends Activity {
 
     protected boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        NetworkInfo netInfo    = cm.getActiveNetworkInfo();
+        urls                   = new URL();
 
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
