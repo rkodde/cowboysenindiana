@@ -3,7 +3,13 @@ package nl.cowboysenindiana.app.network;
 /**
  * Created by Rene on 7-12-2015.
  */
-public final class URL {
+public class URL {
+    private String BASE = "http://tqm.cowboysenindiana.nl/";
 
-    public String GET_CHILDS = "http://tqm.cowboysenindiana.nl/person.php";
+    final public String TEST  = BASE + "person.php";
+    final public String LOGIN = BASE + "login.php";
+
+    public boolean URL () {
+        return true;
+    }
 }
