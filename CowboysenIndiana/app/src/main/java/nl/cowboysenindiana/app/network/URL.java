@@ -8,6 +8,7 @@ public class URL {
 
     final public String TEST  = BASE + "person.php";
     final public String LOGIN = BASE + "login.php";
+    final public String Schedule = BASE + "schedule_group.php";
 
     public boolean URL () {
         return true;

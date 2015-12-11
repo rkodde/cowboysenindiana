@@ -9,6 +9,7 @@
     android:rowCount="1" >
 
 
+
     <TextView
         android:id="@+id/txtDayDate"
         android:background="#ffffff"

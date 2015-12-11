@@ -15,6 +15,25 @@ public class Entry {
     private Date    time_arrival, time_departure;
     private Date    created_at, changed_at;
     private String  description;
+    private int     kids_total;
+
+    public int getTeachers_total() {
+        return teachers_total;
+    }
+
+    public void setTeachers_total(int teachers_total) {
+        this.teachers_total = teachers_total;
+    }
+
+    private int     teachers_total;
+
+    public int getKids_total() {
+        return kids_total;
+    }
+
+    public void setKids_total(int kids_total) {
+        this.kids_total = kids_total;
+    }
 
     public Person getPerson() {
         return person;
