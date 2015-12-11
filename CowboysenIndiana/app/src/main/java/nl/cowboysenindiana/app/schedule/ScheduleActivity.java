@@ -7,13 +7,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -25,17 +28,37 @@ import java.util.List;
 
 import nl.cowboysenindiana.app.database.GroupDBHandler;
 import nl.cowboysenindiana.app.frame.BaseActivity;
+import nl.cowboysenindiana.app.model.Entry;
 import nl.cowboysenindiana.app.model.Group;
+import nl.cowboysenindiana.app.networkTest.HttpManager;
+import nl.cowboysenindiana.app.networkTest.Person_model;
+import nl.cowboysenindiana.app.networkTest.Person_model_JSON_parser;
+import nl.cowboysenindiana.app.networkTest.RequestPackage;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
+import nl.cowboysenindiana.app.JSON_model_parser.entry_schedule;
 
 public class ScheduleActivity extends BaseActivity{
 
     public Date currentDate;
 
+    TextView output; // type output
+    ProgressBar progressBar; // om gebruikers te laten zien dat de app op de achtergrond iets doet
+    List<MyTask> myTasks; //Lijst van je threads.
+
+    List<Entry> entry_model_list; // Je model. Is een list als je een lijst wilt weergeven
+
     @Override
     protected void goNext() {
+
+         /* Deze method is specifiek voor deze activity. */
+        if (isOnline()) {
+            // Dit is stap 1. RequestData wordt aangeroepen. Je stuurt hier in de URL mee
+            requestData(urls.Schedule); // In mijn geval is dat een testpagina
+        } else {
+            showToast("Geen netwerk verbinding");
+        }
 
         String cActionbarTheme = "Dashboard";
 
@@ -151,5 +174,85 @@ public class ScheduleActivity extends BaseActivity{
         Intent i = new Intent(this, PresenceListActivity.class);
         startActivity(i);
         return true;
+    }
+
+
+    // ------------------------------------ NETWORK
+
+
+    public void checkOnline() {
+        /* Deze method is specifiek voor deze activity. */
+        if (isOnline()) {
+            // Dit is stap 1. RequestData wordt aangeroepen. Je stuurt hier in de URL mee
+            requestData(urls.Schedule); // In mijn geval is dat een testpagina
+        } else {
+            showToast("Geen netwerk verbinding");
+        }
+
+    }
+
+    private void requestData(String uri) {
+        //Eerst wordt de Request package geinstantieerd. Hierin worden oa de parameters opgeslagen
+        RequestPackage p = new RequestPackage();
+
+        p.setMethod("POST"); // Deze mag je op POST laten staan
+        p.setUri(uri);
+        p.setParam("group_id", "2"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
+
+        Log.e("getParam", p.getEncodedParams()); //logging
+
+        MyTask mytask = new MyTask(); // Dit is wel vereist.
+        // Hiermee kan je de thread die met de server connect scheiden van de thread voor de weergave (loader animmatie)
+        mytask.execute(p); // en gaan
+    }
+
+    // De method die er voor zorgt dat de output die je krijgt wordt weergegeven in je layout
+    private void updateDisplay() {
+        if (entry_model_list != null) {
+            for (Entry entry_schedule : entry_model_list ) {
+
+                Log.e("ENTRY: ", entry_schedule.getGroup_id()+"");
+//                output.append(person_model.getFirstName() + "\n");
+            }
+        } else {
+            Log.e("leeg", "jup");
+        }
+    }
+
+    // Vereist. Copy->paste, en hier en daar wat aanpassen
+    private class MyTask extends AsyncTask<RequestPackage, String, String>
+    {
+        protected void onPreExecute() {
+            // init progressbar. Zorg er voor dat je een progressbar hebt
+            if (myTasks.size() == 0) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            myTasks.add(this);
+        }
+
+        @Override
+        protected String doInBackground(RequestPackage... params) {
+            //Laat je httpmanager de data versturen en ophalen.
+            String content = HttpManager.getData(params[0]);
+            return content;
+        }
+
+        protected void onPostExecute(String result) {
+            // Vang je result op, en voer het aan je parser die het omzet naar een java model
+            entry_model_list = entry_schedule.parseFeed(result);
+
+            updateDisplay();
+
+            myTasks.remove(this); // om ervoor te zorgen dat als er geen taak meer is, de progressbar uit te zetten
+
+            if (myTasks.size() == 0) {
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) { // Ja eigenlijk geen idee ._.
+//            updateDisplay(values[0]);
+        }
     }
 }
