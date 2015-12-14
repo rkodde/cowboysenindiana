@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="nl.cowboysenindiana.app.rooster.cowboysenindiana" >
+    package="nl.cowboysenindiana.app.rooster.cowboysenindiana">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="nl.cowboysenindiana.app.frame.SplashActivity"
-            android:label="@string/app_name" >
-            <!--android:name="nl.cowboysenindiana.app.schedule.ScheduleActivity"-->
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+
+            <!-- android:name="nl.cowboysenindiana.app.schedule.ScheduleActivity" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,43 +32,48 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.schedule.ScheduleActivity"
-            android:label="November 2015" >
+            android:label="November 2015">
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.networkTest.MainActivity"
-            android:label="November 2015" >
+            android:label="November 2015">
+        </activity>
+        <activity
+            android:name="nl.cowboysenindiana.app.login.LoginActivity"
+            android:label="November 2015"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         </activity>
         <activity
             android:name=".PresenceListActivity"
             android:label="@string/title_activity_dashboard"
-            android:parentActivityName=".PresenceListActivity" >
+            android:parentActivityName=".PresenceListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".PresenceListActivity" />
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.editdata.Correction"
-            android:label="@string/title_activity_correction" >
+            android:label="@string/title_activity_correction">
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.editdata.AddChild"
-            android:label="@string/title_activity_add_child" >
+            android:label="@string/title_activity_add_child">
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.editdata.AddChildDetail"
-            android:label="@string/title_activity_add_child_detail" >
+            android:label="@string/title_activity_add_child_detail">
         </activity>
         <activity
             android:name=".Dashboard"
-            android:label="@string/title_activity_dashboard" >
+            android:label="@string/title_activity_dashboard">
         </activity>
         <activity
             android:name="nl.cowboysenindiana.app.profile.ViewChildProfile"
-            android:label="" >
+            android:label="">
         </activity>
     </application>
 
