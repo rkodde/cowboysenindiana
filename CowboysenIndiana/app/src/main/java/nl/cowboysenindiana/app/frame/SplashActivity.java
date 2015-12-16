@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.widget.ImageView;
 
+import nl.cowboysenindiana.app.login.*;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 
@@ -15,6 +17,7 @@ import nl.cowboysenindiana.app.schedule.ScheduleActivity;
 public class SplashActivity extends Activity {
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 1000;
+    boolean isLoggedIn = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +35,22 @@ public class SplashActivity extends Activity {
 
             @Override
             public void run() {
+            if (isLoggedIn) {
                 Intent i = new Intent(SplashActivity.this, ScheduleActivity.class);
                 startActivity(i);
                 finish();
+            } else {
+                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
             }
         }, SPLASH_TIME_OUT);
     }
 
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
 }
