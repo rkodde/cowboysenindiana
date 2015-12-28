@@ -10,7 +10,7 @@ import java.net.URL;
 /**
  * Created by Rene on 22-11-2015.
  */
-public class HttpManagerTest {
+public class HttpManager {
 
     public static String getData(RequestPackage rp) {
 

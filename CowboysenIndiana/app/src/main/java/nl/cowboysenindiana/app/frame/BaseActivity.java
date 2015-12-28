@@ -10,7 +10,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,10 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
-import nl.cowboysenindiana.app.model.User;
 import nl.cowboysenindiana.app.profile.ViewChildProfile;
 import nl.cowboysenindiana.app.networkTest.MainActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.Dashboard;
@@ -35,12 +31,11 @@ import nl.cowboysenindiana.app.network.URL;
  */
 public abstract class BaseActivity extends Activity {
 
-    private ListView mDrawerList;
-    private RelativeLayout mDrawerPane;
+    ListView mDrawerList;
+    RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     public URL urls;
-    private User gebruiker;
 
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
@@ -50,15 +45,46 @@ public abstract class BaseActivity extends Activity {
         setContentView(R.layout.base);
         initMenu();
         goNext();
-        Intent i = this.getIntent();
-        gebruiker = (User) i.getSerializableExtra("user");
-        Log.d("username ",gebruiker.getUsername());
     }
+
+
+
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_group_presence_list) {
+//            Intent i = new Intent(this, PresenceListActivity.class);
+//            startActivity(i);
+//            finish();
+//            return true;
+//        }
+//
+//        if(id == R.id.action_schedule_main){
+//            Intent i = new Intent(this, ScheduleActivity.class);
+//            startActivity(i);
+//            finish();
+//            return true;
+//
+//        }
+//
+//        if(id == R.id.action_view_child_profile){
+//            Intent i = new Intent(this, ViewChildProfile.class);
+//            startActivity(i);
+//            finish();
+//            return true;
+//        }
+//        return false;
+//    }
 
     protected boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        urls = new URL();
+        NetworkInfo netInfo    = cm.getActiveNetworkInfo();
+        urls                   = new URL();
 
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
@@ -76,8 +102,8 @@ public abstract class BaseActivity extends Activity {
     protected abstract void goNext();
 //    protected abstract Boolean setItemsSelected();
 
-    private void initMenu() {
-        RelativeLayout mainContent = (RelativeLayout) findViewById(R.id.mainContent);
+    private void initMenu(){
+        RelativeLayout mainContent = (RelativeLayout)findViewById(R.id.mainContent);
         View child = getLayoutInflater().inflate(getContentView(), null);
         mainContent.addView(child);
 
@@ -105,7 +131,6 @@ public abstract class BaseActivity extends Activity {
             }
         });
     }
-
     /*
 * Called when a particular item from the navigation drawer
 * is selected.

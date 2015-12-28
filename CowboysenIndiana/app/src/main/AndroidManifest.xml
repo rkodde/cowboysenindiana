@@ -75,11 +75,6 @@
             android:name="nl.cowboysenindiana.app.profile.ViewChildProfile"
             android:label="">
         </activity>
-        <provider
-            android:authorities="nl.cowboysenindiana.app.login.localdb.userprovider"
-            android:name="nl.cowboysenindiana.app.login.LocalDb.UserProvider"
-            android:exported="false" />
-
     </application>
 
 </manifest>
