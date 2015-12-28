@@ -17,9 +17,6 @@ public class Dashboard extends BaseActivity {
     protected void goNext(){
         Toast.makeText(getApplicationContext(), "Dashboard",
                 Toast.LENGTH_LONG).show();
-        /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
-//        GridView gridView = (GridView) findViewById(R.id.gridview);
-//        gridView.setAdapter(new ContentAdapter(this));
     }
 
 }

@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity {
         @Override
         protected String doInBackground(RequestPackage... params) {
             //Laat je httpmanager de data versturen en ophalen.
-            String content = HttpManager.getData(params[0]);
+            String content = HttpManagerTest.getData(params[0]);
             return content;
         }
 
