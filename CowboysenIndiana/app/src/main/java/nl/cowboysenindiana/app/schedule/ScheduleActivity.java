@@ -34,18 +34,18 @@ import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 
-public class ScheduleActivity extends BaseActivity{
+public class ScheduleActivity extends BaseActivity {
 
     public Date currentDate;
-    GridView output; // type output
-    ProgressBar progressBar; // om gebruikers te laten zien dat de app op de achtergrond iets doet
-    List<MyTask> myTasks; //Lijst van je threads.
 
+    ProgressBar progressBar; // om gebruikers te laten zien dat de app op de achtergrond iets doet
     List<Entry> entry_model_list;
+    List<MyTask> myTasks; //Lijst van je threads.
 
     @Override
     protected void goNext() {
 
+        isConnection();
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         progressBar.setVisibility(View.INVISIBLE);
@@ -54,12 +54,6 @@ public class ScheduleActivity extends BaseActivity{
 
         String cActionbarTheme = "Dashboard";
 
-
-        if (isOnline()) {
-            requestData(urls.Schedule);
-        } else {
-            showToast("Geen netwerk verbinding");
-        }
 
 
         // Get new DV
@@ -151,24 +145,6 @@ public class ScheduleActivity extends BaseActivity{
 
 
 
-
-    private void requestData(String uri) {
-        Date today = new Date();
-        //Eerst wordt de Request package geinstantieerd. Hierin worden oa de parameters opgeslagen
-        RequestPackage p = new RequestPackage();
-
-        p.setMethod("POST"); // Deze mag je op POST laten staan
-        p.setUri(uri);
-        p.setParam("group_id", "1"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
-        //p.setParam("date", "2015-12-10"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
-
-        Log.e("getParam", p.getEncodedParams()); //logging
-
-        MyTask mytask = new MyTask(); // Dit is wel vereist.
-        // Hiermee kan je de thread die met de server connect scheiden van de thread voor de weergave (loader animmatie)
-        mytask.execute(p); // en gaan
-    }
-
     public void setActionBarTheme(String cActionbarTheme){
 
 
@@ -196,7 +172,33 @@ public class ScheduleActivity extends BaseActivity{
         return true;
     }
 
+  //--------------- COnnection
 
+    public void isConnection(){
+        if (isOnline()) {
+            requestData(urls.Schedule);
+        } else {
+            showToast("Geen netwerk verbinding");
+        }
+
+    }
+
+    private void requestData(String uri) {
+        Date today = new Date();
+        //Eerst wordt de Request package geinstantieerd. Hierin worden oa de parameters opgeslagen
+        RequestPackage p = new RequestPackage();
+
+        p.setMethod("POST"); // Deze mag je op POST laten staan
+        p.setUri(uri);
+        p.setParam("group_id", "1"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
+        //p.setParam("date", "2015-12-10"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
+
+        Log.e("getParam", p.getEncodedParams()); //logging
+
+        MyTask mytask = new MyTask(); // Dit is wel vereist.
+        // Hiermee kan je de thread die met de server connect scheiden van de thread voor de weergave (loader animmatie)
+        mytask.execute(p); // en gaan
+    }
 
     // Vereist. Copy->paste, en hier en daar wat aanpassen
     private class MyTask extends AsyncTask<RequestPackage, String, String>
