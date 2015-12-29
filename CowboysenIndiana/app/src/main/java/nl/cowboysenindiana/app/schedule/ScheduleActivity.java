@@ -28,7 +28,7 @@ import nl.cowboysenindiana.app.database.GroupDBHandler;
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.model.Entry;
 import nl.cowboysenindiana.app.model.Group;
-import nl.cowboysenindiana.app.networkTest.HttpManager;
+import nl.cowboysenindiana.app.networkTest.HttpManagerTest;
 import nl.cowboysenindiana.app.networkTest.RequestPackage;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.PresenceListActivity;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
@@ -46,14 +46,12 @@ public class ScheduleActivity extends BaseActivity{
     @Override
     protected void goNext() {
 
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         progressBar.setVisibility(View.INVISIBLE);
 
         myTasks = new ArrayList<>();
 
         String cActionbarTheme = "Dashboard";
-
 
         if (isOnline()) {
             requestData(urls.Schedule);
@@ -212,7 +210,7 @@ public class ScheduleActivity extends BaseActivity{
         @Override
         protected String doInBackground(RequestPackage... params) {
             //Laat je httpmanager de data versturen en ophalen.
-            String content = HttpManager.getData(params[0]);
+            String content = HttpManagerTest.getData(params[0]);
             return content;
         }
 

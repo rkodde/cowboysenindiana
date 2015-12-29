@@ -27,13 +27,12 @@ public class login_parser {
             }
 
             Log.e("Login", login.getString("login"));
-
             Log.e("username", login.getString("username"));
 
             gebruiker = new User(login.getInt("user_id"));
             gebruiker.setUsername(login.getString("username"));
             gebruiker.setAuthentication(true);
-            gebruiker.setKey("azsxdcfvgbhnjm1029384756"); // todo: server has to return this value
+//            gebruiker.setKey("azsxdcfvgbhnjm1029384756"); // todo: server has to return this value
 
             return gebruiker;
 
