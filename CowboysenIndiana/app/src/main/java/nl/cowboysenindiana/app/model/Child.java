@@ -19,7 +19,7 @@ public class Child extends Person {
     private Provider    primaryProvider;
     private Date        dateOfPlacement;
     private String      image;
-    private String      isInside;
+    private boolean      isInside;
 
     public Child(){
         super.setPersonType(CHILD);
@@ -44,14 +44,14 @@ public class Child extends Person {
 //    public void setChildProviders(List<ChildProvider> providers) { this.providers = providers; }
 //    public void addChildProvider(ChildProvider childProvider) { this.providers.add(childProvider); }
 
-    public Provider getPrimaryChildProvider() { return primaryProvider; }
-    public void setPrimaryChildProvider(Provider primaryProvider) { this.primaryProvider = primaryProvider; }
+//    public Provider getPrimaryChildProvider() { return primaryProvider; }
+//    public void setPrimaryChildProvider(Provider primaryProvider) { this.primaryProvider = primaryProvider; }
 
     public Date getDateOfPlacement() { return dateOfPlacement; }
     public void setDateOfPlacement(Date dateOfPlacement) { this.dateOfPlacement = dateOfPlacement; }
 
-    public String isInside() {    return isInside;  }
-    public void setInside(String inside) { this.isInside = inside;  }
+    public boolean isInside() {    return isInside;  }
+    public void setInside(boolean inside) { this.isInside = inside;  }
 
     public String getImage() {
         return image;

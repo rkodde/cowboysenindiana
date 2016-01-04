@@ -3,21 +3,26 @@ package nl.cowboysenindiana.app.rooster.cowboysenindiana;
 import android.content.Context;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import nl.cowboysenindiana.app.data.ChildDataSource;
-import nl.cowboysenindiana.app.data.ChildToTest;
-import nl.cowboysenindiana.app.data.DataProviderToTest;
 import nl.cowboysenindiana.app.frame.BaseActivity;
+import nl.cowboysenindiana.app.model.Child;
+import nl.cowboysenindiana.app.network.HttpManager;
+import nl.cowboysenindiana.app.networkTest.RequestPackage;
+import nl.cowboysenindiana.app.presencelist.ChildJSONparser;
 import nl.cowboysenindiana.app.presencelist.PresenceListContextMenuFragment;
 import nl.cowboysenindiana.app.utilities.ScreenUtility;
 import nl.cowboysenindiana.app.utilities.UIHelper;
@@ -36,15 +41,14 @@ import nl.cowboysenindiana.app.utilities.UIHelper;
 public class PresenceListActivity extends BaseActivity {
 
     private GridView gridView;
-    private List<ChildToTest> children;
-//    private List<Child> children;
+    private List<Child> children;
 
-    private ChildToTest child;
-    //    private Child child;
+    private Child child;
     private String childName;
     private boolean isInside;
 
-    private ChildDataSource dataSource;
+    private ProgressBar progressBar;
+    List<MyRequestTask> myTasks;
 
     public static final String CHILD_BUNDLE = "CHILD_BUNDLE";
     private static final int REQUEST_CODE = 1001;
@@ -59,7 +63,18 @@ public class PresenceListActivity extends BaseActivity {
 
         showToast("get data for PresenceList");
 
-        children = DataProviderToTest.getData();
+        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
+        progressBar.setVisibility(View.INVISIBLE);
+
+        myTasks = new ArrayList<>();
+
+        /** get data from server ---------------- */
+        if (isOnline()) {
+            // Dit is stap 1. RequestData wordt aangeroepen. Je stuurt hier in de URL mee
+            requestData(urls.Kids); // In mijn geval is dat een Kids
+        } else {
+            showToast("Geen netwerk verbinding");
+        }
 
         refreshDisplay();
     }
@@ -78,8 +93,6 @@ public class PresenceListActivity extends BaseActivity {
         if (utility.isHorizontal()) gridView.setNumColumns(5);
         else gridView.setNumColumns(3);
     }
-
-
 
 
     /** inner class PresenceListContentAdapter ====================================================
@@ -104,7 +117,7 @@ public class PresenceListActivity extends BaseActivity {
 
         @Override
         public long getItemId(int position) {
-            return children.get(position).getChildNumber();         // getId() for Child
+            return children.get(position).getId();      // getId() for Child
         }
 
         @Override
@@ -116,8 +129,8 @@ public class PresenceListActivity extends BaseActivity {
                 view.setTag(R.id.text, view.findViewById(R.id.text));
             }
 
-            child = (ChildToTest) getItem(position);
-            childName = child.getChildName();
+            child = (Child) getItem(position);
+            childName = child.getFirstName() + " " + child.getLastName();
             isInside = child.isInside();
 
             ImageView picture = (ImageView) view.getTag(R.id.picture);
@@ -136,8 +149,8 @@ public class PresenceListActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
 
-                    if (isInside != true) child.setIsInside(true);
-                    else child.setIsInside(false);
+                    if (isInside != true) child.setInside(true);
+                    else child.setInside(false);
 
                     PresenceListActivity.this.refreshDisplay();
                     Toast.makeText(context, "Status geweizigd", Toast.LENGTH_SHORT).show();
@@ -149,10 +162,10 @@ public class PresenceListActivity extends BaseActivity {
             view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    Bundle bundle = child.toBundle();
+                    //Bundle bundle = child.toBundle();
 
                     PresenceListContextMenuFragment dialog = new PresenceListContextMenuFragment();
-                    dialog.setArguments(bundle);
+                    //dialog.setArguments(bundle);
                     dialog.show(getFragmentManager(), "my dialog");
 
                     return true;
@@ -170,4 +183,66 @@ public class PresenceListActivity extends BaseActivity {
             picture.setColorFilter(filter);
         }
     }
+
+
+
+    /**
+     * Methode starts MyRequestTask to get data from the server
+     * @param uri
+     */
+    private void requestData(String uri) {
+        //Eerst wordt de Request package geinstantieerd. Hierin worden oa de parameters opgeslagen
+        RequestPackage p = new RequestPackage();
+
+        p.setMethod("POST"); // Deze mag je op POST laten staan
+        p.setUri(uri);
+       // p.setParam("person_id", "2"); // Dit zijn je params, je kan er meerdere mee sturen. In dit geval vraag ik person op met ID 2
+
+        Log.e("getParam", p.getEncodedParams()); //logging
+
+        MyRequestTask mytask = new MyRequestTask(); // Dit is wel vereist.
+        // Hiermee kan je de thread die met de server connect scheiden van de thread voor de weergave (loader animmatie)
+        mytask.execute(p); // en gaan
+    }
+
+    /**
+     * MyRequestTask inner class
+     * responsible for paralell
+     */
+    private class MyRequestTask extends AsyncTask<RequestPackage, String, String>
+    {
+        protected void onPreExecute() {
+            // init progressbar. Zorg er voor dat je een progressbar hebt
+            if (myTasks.size() == 0) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            myTasks.add(this);
+        }
+
+        @Override
+        protected String doInBackground(RequestPackage... params) {
+            //Laat je httpmanager de data versturen en ophalen.
+            String content = HttpManager.getData(params[0]);
+            return content;
+        }
+
+        protected void onPostExecute(String result) {
+            // Vang je result op, en voer het aan je parser die het omzet naar een java model
+            children = ChildJSONparser.parseFeed(result);
+
+            refreshDisplay();
+
+            myTasks.remove(this); // om ervoor te zorgen dat als er geen taak meer is, de progressbar uit te zetten
+
+            if (myTasks.size() == 0) {
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) { // Ja eigenlijk geen idee ._.
+//            updateDisplay(values[0]);
+        }
+    }
+
 }

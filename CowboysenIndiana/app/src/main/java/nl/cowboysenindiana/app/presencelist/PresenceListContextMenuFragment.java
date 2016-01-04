@@ -38,10 +38,10 @@ public class PresenceListContextMenuFragment extends DialogFragment {
 
     private List<MenuItem> menuItems;
 
-    private PresenceListContextMenuFragment.MenuItem[] f = {
+    private MenuItem[] f = {
 //            new PresenceListContextMenuFragment.MenuItem ("Aanwezig", R.drawable.ic_account_check_grey600_48dp),
-            new PresenceListContextMenuFragment.MenuItem ("Profiel", R.drawable.ic_account_multiple_grey600_48dp),
-            new PresenceListContextMenuFragment.MenuItem ("Correctie", R.drawable.ic_close_circle_black_48dp)
+            new MenuItem ("Profiel", R.drawable.ic_account_multiple_grey600_48dp),
+            new MenuItem ("Correctie", R.drawable.ic_close_circle_black_48dp)
     };
 
 
