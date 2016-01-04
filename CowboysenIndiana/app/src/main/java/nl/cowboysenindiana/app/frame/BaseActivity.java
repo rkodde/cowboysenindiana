@@ -43,6 +43,7 @@ public abstract class BaseActivity extends Activity {
     private User gebruiker;
 
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
+     
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,9 @@ public abstract class BaseActivity extends Activity {
         goNext();
         Intent i = this.getIntent();
         gebruiker = (User) i.getSerializableExtra("user");
-        Log.d("username ",gebruiker.getUsername());
+        // User is not yet reachable in next intents.
+        // To do: Make an getUser() for the BaseActivity
+//        Log.d("username ",gebruiker.getUsername().toString());
     }
 
     protected boolean isOnline() {
