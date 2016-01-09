@@ -8,7 +8,7 @@
 
     <GridView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/gridview"
+        android:id="@+id/gridview_presence"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:verticalSpacing="1dp"

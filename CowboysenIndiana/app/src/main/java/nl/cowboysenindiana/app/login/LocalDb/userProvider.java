@@ -18,7 +18,7 @@ public class UserProvider extends ContentProvider {
     private static final int USERS_ID = 2;
 
     private static final UriMatcher urimatcher =
-        new UriMatcher(UriMatcher.NO_MATCH);
+            new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
         urimatcher.addURI(AUTHORITY, BASE_PATH, USERS);
@@ -37,13 +37,13 @@ public class UserProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         return db.query(
-            LocalDbOpenHelper.TABLE_LOGIN,
-            LocalDbOpenHelper.ALL_COLUMNS,
-            selection,
-            null,
-            null,
-            null,
-            LocalDbOpenHelper.USER_CREATED
+                LocalDbOpenHelper.TABLE_LOGIN,
+                LocalDbOpenHelper.ALL_COLUMNS,
+                selection,
+                null,
+                null,
+                null,
+                LocalDbOpenHelper.USER_CREATED
         );
     }
 

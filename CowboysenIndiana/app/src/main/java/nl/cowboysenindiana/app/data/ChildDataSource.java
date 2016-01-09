@@ -73,9 +73,9 @@ public class ChildDataSource {
         values.put(ChildDBOpenHelper.COLUMN_GENDER, child.getGender());
         values.put(ChildDBOpenHelper.COLUMN_CONTACTINFORMATION, child.getContactInformation());
         values.put(ChildDBOpenHelper.COLUMN_BIRTHDAY, String.valueOf(child.getBirthDay()));
-        values.put(ChildDBOpenHelper.COLUMN_PARTICULARITY, child.getParticularities());
-        values.put(ChildDBOpenHelper.COLUMN_PROVIDERS, child.getProviders());
-        values.put(ChildDBOpenHelper.COLUMN_PRIMARYPROVIDER, child.getPrimaryChildProvider().toString());
+//        values.put(ChildDBOpenHelper.COLUMN_PARTICULARITY, child.getParticularities());
+//        values.put(ChildDBOpenHelper.COLUMN_PROVIDERS, child.getProviders());
+        //values.put(ChildDBOpenHelper.COLUMN_PRIMARYPROVIDER, child.getPrimaryChildProvider().toString());
         values.put(ChildDBOpenHelper.COLUMN_CREATED, String.valueOf(child.getDateCreated()));
         values.put(ChildDBOpenHelper.COLUMN_PLACEMENT, String.valueOf(child.getDateOfPlacement()));
         values.put(ChildDBOpenHelper.COLUMN_IS_INSIDE, child.isInside());
@@ -159,9 +159,10 @@ public class ChildDataSource {
                                 cursor.getColumnIndex(
                                         ChildDBOpenHelper.COLUMN_IMAGE)));
                 child.setInside(
-                        cursor.getString(
-                                cursor.getColumnIndex(
-                                        ChildDBOpenHelper.COLUMN_IS_INSIDE)));
+                        Boolean.getBoolean(
+                            cursor.getString(
+                                    cursor.getColumnIndex(
+                                        ChildDBOpenHelper.COLUMN_IS_INSIDE))));
                 children.add(child);
             }
         }

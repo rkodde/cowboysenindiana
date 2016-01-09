@@ -39,7 +39,7 @@ public abstract class Person {
      */
     public static final String PRIMARY_PROVIDER = "Hoofd verzorger";
     public static final String SECOND_PROVIDER = "Tweede verzorger";
-    public static final String THIRD_PROVIDER = "Derde verzorgen";
+    public static final String THIRD_PROVIDER = "Derde verzorger";
     public static final String LEADER = "Leidster";
     public static final String TRAINEE = "Stagair";
     public static final String MANAGER = "Manager";
@@ -51,7 +51,17 @@ public abstract class Person {
 
     @Type
     public String getPersonType(){ return type; }
-    public void setPersonType(@Type String type) { this.type = type; }
+    public void setPersonType(String t) {
+
+        @Type String type = null;
+        if (t.equals("Hoofd verzorger")) this.type = Person.PRIMARY_PROVIDER;
+        else if (t.equals("Tweede verzorger")) this.type = Person.SECOND_PROVIDER;
+        else if (t.equals("Derde verzorger")) this.type = Person.THIRD_PROVIDER;
+        else if (t.equals("Leidster")) this.type = Person.LEADER;
+        else if (t.equals("Stagair")) this.type = Person.TRAINEE;
+        else if (t.equals("Manager")) this.type = Person.MANAGER;
+        else if (t.equals("Kind")) this.type = Person.CHILD;
+    }
 
     /**
      * Define Contact Information ------------------------------------------
@@ -92,7 +102,11 @@ public abstract class Person {
 
     @Type
     public  String getGender(){ return gender; }
-    public void setGender(@Gender String gender) { this.gender = gender; }
+    public void setGender(String g) {
+        @Gender String gender = null;
+        if (g.equals("Man")) this.gender = Person.MALE;
+        else if (g.equals("Vrouw")) this.gender = Person.FEMALE;
+    }
 
     /**
      * Define Date&Time of creating ---------------------------------------

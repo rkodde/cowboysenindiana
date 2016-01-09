@@ -16,6 +16,7 @@ import nl.cowboysenindiana.app.editdata.AddChild;
 import nl.cowboysenindiana.app.editdata.AddChildDetail;
 import nl.cowboysenindiana.app.editdata.Correction;
 import nl.cowboysenindiana.app.editdata.RangeSeekBar;
+import nl.cowboysenindiana.app.model.Child;
 import nl.cowboysenindiana.app.profile.ViewChildProfile;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 import nl.cowboysenindiana.app.schedule.ScheduleActivity;
@@ -34,7 +35,7 @@ public class PresenceListContextMenuFragment extends DialogFragment {
 
     private Intent intent;
     private Bundle bundle;
-    private ChildToTest child;
+    private Child child;
 
     private List<MenuItem> menuItems;
 
@@ -54,14 +55,14 @@ public class PresenceListContextMenuFragment extends DialogFragment {
 
         menuItems = Arrays.asList(f);
         bundle = getArguments();
-        child = new ChildToTest(bundle);
+        child = new Child(bundle);
 
         PresenceListMenuAdapter adapter = new PresenceListMenuAdapter(getActivity(),
                 R.layout.presencelist_context_menu_item,
                 this.menuItems);
 
         Dialog dialog = new Dialog(getActivity());
-        dialog.setTitle(child.getChildName());
+        dialog.setTitle(child.getFirstName() + " " + child.getLastName());
         dialog.setContentView(R.layout.precenselist_context_menu);
 
         ListView listView = (ListView) dialog.findViewById(android.R.id.list);
@@ -85,6 +86,8 @@ public class PresenceListContextMenuFragment extends DialogFragment {
             //@// TODO: 29/11/15 Correction screen needs to be a Dialog also.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 switch (position) {
 //                    case 0: // Aanwezig
 //                        intent = new Intent(getActivity(), AddChildDetail.class);

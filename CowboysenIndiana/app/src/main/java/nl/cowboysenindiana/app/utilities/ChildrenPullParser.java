@@ -122,15 +122,15 @@ public class ChildrenPullParser {
 					e.printStackTrace();
 				}
 			}
-			else if (currentTag.equals(CHILD_PARTICULARITY)) {
-				currentChild.setParticularities(xmlText);
-			}
-			else if (currentTag.equals(CHILD_PROVIDERS)) {
-				currentChild.setChildProviders(null);
-			}
-			else if (currentTag.equals(CHILD_PRIMARYPROVIDER)) {
-				currentChild.setPrimaryChildProvider(null);
-			}
+//			else if (currentTag.equals(CHILD_PARTICULARITY)) {
+//				currentChild.setParticularities(xmlText);
+//			}
+//			else if (currentTag.equals(CHILD_PROVIDERS)) {
+//				currentChild.setChildProviders(null);
+//			}
+//			else if (currentTag.equals(CHILD_PRIMARYPROVIDER)) {
+//				currentChild.setPrimaryChildProvider(null);
+//			}
 			else if (currentTag.equals(CHILD_CREATED)) {
 				try {
 					currentChild.setDateCreated(new SimpleDateFormat("yyyy-MM-dd").parse(xmlText));
@@ -148,7 +148,7 @@ public class ChildrenPullParser {
 				}
 			}
 			else if (currentTag.equals(CHILD_IS_INSIDE)) {
-				currentChild.setInside(xmlText);
+				currentChild.setInside(Boolean.getBoolean(xmlText));
 			}
 			else if (currentTag.equals(CHILD_IMAGE)) {
 				currentChild.setImage(xmlText);

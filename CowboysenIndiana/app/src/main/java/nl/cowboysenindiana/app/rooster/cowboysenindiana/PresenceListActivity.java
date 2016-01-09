@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,8 +62,8 @@ public class PresenceListActivity extends BaseActivity {
 
         showToast("get data for PresenceList");
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
-        progressBar.setVisibility(View.INVISIBLE);
+//        progressBar = (ProgressBar) findViewById(R.id.progressBar_precence);
+//        progressBar.setVisibility(View.INVISIBLE);
 
         myTasks = new ArrayList<>();
 
@@ -85,7 +84,7 @@ public class PresenceListActivity extends BaseActivity {
     public void refreshDisplay(){
 
         /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
-        gridView = (GridView) findViewById(R.id.gridview);
+        gridView = (GridView) findViewById(R.id.gridview_presence);
         gridView.setAdapter(this.new PresenceListContentAdapter(this));
 
         /** depend on screen size set columns number ------------*/
@@ -153,7 +152,7 @@ public class PresenceListActivity extends BaseActivity {
                     else child.setInside(false);
 
                     PresenceListActivity.this.refreshDisplay();
-                    Toast.makeText(context, "Status geweizigd", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Status veranderd", Toast.LENGTH_SHORT).show();
                 }
             });// ---------------------------------------- closing the setOnClickListener method
 
@@ -166,7 +165,7 @@ public class PresenceListActivity extends BaseActivity {
 
                     PresenceListContextMenuFragment dialog = new PresenceListContextMenuFragment();
                     //dialog.setArguments(bundle);
-                    dialog.show(getFragmentManager(), "my dialog");
+                    dialog.show(getFragmentManager(), childName);
 
                     return true;
                 }
@@ -214,7 +213,7 @@ public class PresenceListActivity extends BaseActivity {
         protected void onPreExecute() {
             // init progressbar. Zorg er voor dat je een progressbar hebt
             if (myTasks.size() == 0) {
-                progressBar.setVisibility(View.VISIBLE);
+//                progressBar.setVisibility(View.VISIBLE);
             }
             myTasks.add(this);
         }
@@ -223,6 +222,9 @@ public class PresenceListActivity extends BaseActivity {
         protected String doInBackground(RequestPackage... params) {
             //Laat je httpmanager de data versturen en ophalen.
             String content = HttpManager.getData(params[0]);
+            if (content.length() > 0 )         Log.i("DATA  ------->>>>>>> ", "Extern data is " + content);
+            else         Log.i("DATA : ", "Nothing is loaded");
+
             return content;
         }
 
@@ -235,7 +237,7 @@ public class PresenceListActivity extends BaseActivity {
             myTasks.remove(this); // om ervoor te zorgen dat als er geen taak meer is, de progressbar uit te zetten
 
             if (myTasks.size() == 0) {
-                progressBar.setVisibility(View.INVISIBLE);
+//                progressBar.setVisibility(View.INVISIBLE);
             }
         }
 
