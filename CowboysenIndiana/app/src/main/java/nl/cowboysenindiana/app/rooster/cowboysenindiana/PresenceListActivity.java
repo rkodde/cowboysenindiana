@@ -69,6 +69,8 @@ public class PresenceListActivity extends BaseActivity {
 
         /** get data from server ---------------- */
         if (isOnline()) {
+            Log.i("DATA  ------->>>>>>> ", "Server is online ");
+
             // Dit is stap 1. RequestData wordt aangeroepen. Je stuurt hier in de URL mee
             requestData(urls.Kids); // In mijn geval is dat een Kids
         } else {

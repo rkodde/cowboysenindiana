@@ -54,6 +54,8 @@ public class ScheduleActivity extends BaseActivity{
         String cActionbarTheme = "Dashboard";
 
         if (isOnline()) {
+            Log.i("DATA  ------->>>>>>> ", "Server is online ");
+
             requestData(urls.Schedule);
         } else {
             showToast("Geen netwerk verbinding");
@@ -147,9 +149,6 @@ public class ScheduleActivity extends BaseActivity{
 
     }
 
-
-
-
     private void requestData(String uri) {
         Date today = new Date();
         //Eerst wordt de Request package geinstantieerd. Hierin worden oa de parameters opgeslagen
@@ -211,6 +210,10 @@ public class ScheduleActivity extends BaseActivity{
         protected String doInBackground(RequestPackage... params) {
             //Laat je httpmanager de data versturen en ophalen.
             String content = HttpManagerTest.getData(params[0]);
+
+            if (content.length() > 0 )         Log.i("SCHEDULE DATA ---->>>> ", "Extern data is " + content);
+            else         Log.i("DATA : ", "Nothing is loaded");
+
             return content;
         }
 
