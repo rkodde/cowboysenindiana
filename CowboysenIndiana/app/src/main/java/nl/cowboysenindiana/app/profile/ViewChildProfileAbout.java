@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +13,11 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
+import nl.cowboysenindiana.app.model.Child;
 import nl.cowboysenindiana.app.rooster.cowboysenindiana.R;
 
 /**
@@ -58,6 +62,15 @@ public class ViewChildProfileAbout extends Fragment {
                 toggle(view, position);
             }
         });
+
+
+        Intent intent = getActivity().getIntent();
+        Bundle selectedChildBundle = intent.getBundleExtra("CHILD_BUNDLE");
+        Child selectedChild = new Child(selectedChildBundle);
+
+        TextView TextViewFirstName = (TextView) view.findViewById(R.id.textViewProfileName);
+        String fullName = selectedChild.getFirstName()+" "+selectedChild.getLastName();
+        TextViewFirstName.setText(fullName);
 
         return view;
     }
