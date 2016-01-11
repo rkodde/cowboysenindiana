@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import nl.cowboysenindiana.app.frame.BaseActivity;
 import nl.cowboysenindiana.app.model.Child;
@@ -48,6 +53,8 @@ public class PresenceListActivity extends BaseActivity {
 
     private ProgressBar progressBar;
     List<MyRequestTask> myTasks;
+
+    public int lastPosition = 0;
 
     public static final String CHILD_BUNDLE = "CHILD_BUNDLE";
     private static final int REQUEST_CODE = 1001;
@@ -85,6 +92,50 @@ public class PresenceListActivity extends BaseActivity {
      * */
     public void refreshDisplay(){
 
+        if (children == null) {
+
+
+
+            children = new ArrayList<>();
+
+            HashMap firstNames = new HashMap<Integer, String>();
+            firstNames.put(1,"Piet");
+            firstNames.put(2,"Jan");
+            firstNames.put(3,"Klaas");
+            firstNames.put(4,"Joop");
+            firstNames.put(5,"Teun");
+            firstNames.put(6,"Sjonnie");
+            firstNames.put(7,"Kees");
+
+            HashMap lastNames = new HashMap<Integer, String>();
+            lastNames.put(1,"van Dijk");
+            lastNames.put(2,"de Boer");
+            lastNames.put(3,"Naaktgeboren");
+            lastNames.put(4,"Burger");
+            lastNames.put(5,"Heijn");
+            lastNames.put(6,"Vaak");
+            lastNames.put(7,"Flodder");
+
+
+            for (int i = 0; i < 25; i++) {
+                Child placeholderChild = new Child();
+                placeholderChild.setBirthDay(new Date());
+                placeholderChild.setDateOfPlacement(new Date());
+                int min = 1;
+                int max = 7;
+                int rand = min + (int)(Math.random() * ((max - min) + 1));
+                placeholderChild.setFirstName(firstNames.get(rand).toString());
+                rand = min + (int)(Math.random() * ((max - min) + 1));
+                placeholderChild.setLastName(lastNames.get(rand).toString());
+                placeholderChild.setGender("M");
+                placeholderChild.setDateCreated(new Date());
+                placeholderChild.setInside(true);
+                placeholderChild.setId(i+1);
+                placeholderChild.setContactInformation("email@me.com");
+                placeholderChild.setImage("drawable/child_smile" + (1 + (int)(Math.random() * 8)));
+                children.add(placeholderChild);
+            }
+        }
         /** Initialise a gridView for PresenceList and Set ContentAdapter to GridView */
         gridView = (GridView) findViewById(R.id.gridview_presence);
         gridView.setAdapter(this.new PresenceListContentAdapter(this));
@@ -122,7 +173,7 @@ public class PresenceListActivity extends BaseActivity {
         }
 
         @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
+        public View getView(final int position, View view, ViewGroup viewGroup) {
 
             if (view == null) {
                 view = inflater.inflate(R.layout.presencelist_grid_item, viewGroup, false);
@@ -135,10 +186,11 @@ public class PresenceListActivity extends BaseActivity {
             isInside = child.isInside();
 
             ImageView picture = (ImageView) view.getTag(R.id.picture);
-            String imageId = "drawable/child_smile" + (1 + (int)(Math.random() * 8));
+            //String imageId = "drawable/child_smile" + (1 + (int)(Math.random() * 8));
+            String imageId = child.getImage();
             final int currentImage = this.context.getResources().getIdentifier(imageId, null, context.getPackageName());
             picture.setImageResource(currentImage);
-            if (isInside != true) setColor(picture);
+            if (!isInside) setColor(picture);
 
             UIHelper.displayText(view, R.id.text, childName + " " + isInside);
 
@@ -149,8 +201,8 @@ public class PresenceListActivity extends BaseActivity {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    if (isInside != true) child.setInside(true);
+                    child = (Child) getItem(position);
+                    if (!child.isInside()) child.setInside(true);
                     else child.setInside(false);
 
                     PresenceListActivity.this.refreshDisplay();
@@ -164,9 +216,10 @@ public class PresenceListActivity extends BaseActivity {
                 @Override
                 public boolean onLongClick(View view) {
                     //Bundle bundle = child.toBundle();
-
+                    child = (Child) getItem(position);
+                    Bundle bundle = child.toBundle();
                     PresenceListContextMenuFragment dialog = new PresenceListContextMenuFragment();
-                    //dialog.setArguments(bundle);
+                    dialog.setArguments(bundle);
                     dialog.show(getFragmentManager(), childName);
 
                     return true;
